@@ -13,7 +13,7 @@ import { TeamService } from '../service/team.service';
   styleUrls: ['./teams.component.css']
 })
 export class TeamsComponent implements OnInit {
-  private teams: Team[];
+  teams: Team[];
 
   constructor(
     private teamService: TeamService

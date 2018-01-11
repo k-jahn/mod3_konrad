@@ -23,6 +23,7 @@ import { TeamsComponent } from './component/teams.component';
 import { EventService } from './service/event.service';
 import { GameService } from './service/game.service';
 import { TeamService } from './service/team.service';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { TeamService } from './service/team.service';
     BrowserAnimationsModule,
     BrowserModule,
     MatTabsModule,
+    AppRoutingModule,
   ],
   providers: [
     EventService,

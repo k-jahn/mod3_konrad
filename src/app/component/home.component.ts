@@ -12,7 +12,7 @@ import { EventService } from '../service/event.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  private events: Event[];
+  events: Event[];
 
   constructor(
     private eventService: EventService

@@ -1,11 +1,31 @@
-<header>
+<header class="bg-secondary">
   <span class="logoWrapper">
     <img src="./assets/images/nysl_logo.png" alt="logo" title="logo" id="logo">
   </span>
   <h1>{{title}}</h1>
 </header>
 
-<mat-tab-group>
+<nav class="navbar bg-primary navbar-dark">
+  <!-- Links -->
+  <ul class="navbar-nav navbar-expand">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/home']">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/games']">Games</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/teams']">Teams</a>
+    </li>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>
+
+
+<!-- tab navigation, reuse for submenues -->
+
+<!-- <mat-tab-group>
   <mat-tab label="Home">
     <app-home></app-home>
   </mat-tab>
@@ -15,4 +35,4 @@
   <mat-tab label="Teams">
     <app-teams></app-teams>
   </mat-tab>
-</mat-tab-group>
+</mat-tab-group> -->

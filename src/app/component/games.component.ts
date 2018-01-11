@@ -14,8 +14,9 @@ import { TeamService } from '../service/team.service';
   styleUrls: ['./games.component.css']
 })
 export class GamesComponent implements OnInit {
-  private games: Game[];
-  private teams: Team[];
+  myGames: Game[];
+  games: Game[];
+  teams: Team[];
 
 
   private findTeam(id: number): Team {
@@ -28,7 +29,10 @@ export class GamesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.gameService.getGames().subscribe(games => this.games = games);
+    this.gameService.getGames().subscribe(games => {
+      this.games = games;
+      this.myGames = games.filter((x, i) => i % 2);
+    });
     this.teamService.getTeams().subscribe(teams => this.teams = teams);
   }
 
