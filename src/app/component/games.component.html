@@ -1,0 +1,16 @@
+<h3>Upcoming Games</h3>
+<table class="table">
+    <tr *ngFor="let game of games">
+        <td>
+            <div class="text-center"><strong>{{findTeam(game.team1Id).name}}</strong> vs. <strong>{{findTeam(game.team2Id).name}}</strong> </div>
+            <div class="row">
+                <div class="col-6">
+                    {{game.date}}, {{game.time}}
+                </div>
+                <div class="col-6 text-right">
+                    {{game.location}}
+                </div>
+            </div>
+        </td>
+    </tr>
+</table> 
