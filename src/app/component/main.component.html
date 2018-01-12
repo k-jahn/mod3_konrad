@@ -1,0 +1,20 @@
+<!-- main nav carousel -->
+<nav mat-tab-nav-bar>
+  <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+    {{link.label}}
+  </a>
+</nav>
+<!-- toc subnav -->
+<div *ngIf="subnavLinks.length" class="subnav">
+  <div class="docs-toc-heading">subnav placeholder</div>
+  <nav>
+    <a [href]="_rootUrl + '#' + link.id" *ngFor="let link of subnavLinks; let i = index" class="docs-level-{{link.type}} docs-link"
+      [class.docs-active]="link.active">
+      {{link.name}}
+    </a>
+  </nav>
+</div>
+
+<div class="page">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,37 @@
+
+$headerheight: 56px;
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $headerheight;
+    background-color: rgba(0, 100, 0, 1);
+    padding-left: $headerheight;
+}
+#logo {
+    position: absolute;
+    top: calc(0.1 * #{$headerheight});
+    left: calc(0.1 * #{$headerheight});
+    height: calc(0.8 * #{$headerheight});
+    width: calc(0.8 * #{$headerheight});
+
+}
+main {
+    position:  fixed;
+    top: $headerheight;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: hidden;
+}
+h1 {
+    display: inline;
+    font-size: 24px;
+    line-height: 56px;
+}
+
+.nav-link {
+    padding: 0.5em 1.5em;
+}

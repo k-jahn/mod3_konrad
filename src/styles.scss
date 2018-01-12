@@ -1,0 +1,23 @@
+// Imports ======================================================================
+/* @import 'bootstrap/dist/css/bootstrap.css'; */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+// vars ==========================================================================
+
+
+
+
+// global styles ====================================================================
+body {
+    color: rgba(0,0,0,0.87);
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.pcWrapper {
+    max-width: 500px;
+    position: relative;
+}
