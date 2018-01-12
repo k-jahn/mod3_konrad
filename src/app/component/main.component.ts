@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AppComponent } from './app.component';
+
 import { Link } from '../class/link';
 
 @Component({
@@ -36,9 +38,11 @@ export class MainComponent implements OnInit {
   ];
 
   constructor(
+    private app: AppComponent
   ) { }
 
   ngOnInit() {
+    this.app.title = 'NYSL';
   }
 
 }

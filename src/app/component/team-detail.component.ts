@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
+import { AppComponent } from './app.component';
 
 @Component({
   selector: 'app-team-detail',
@@ -11,11 +12,13 @@ import { Router } from '@angular/router';
 export class TeamDetailComponent implements OnInit {
 
   constructor(
+    private app: AppComponent,
     private router: Router,
     private location: Location,
   ) { }
 
   ngOnInit() {
+    this.app.title = 'Team Detail';
   }
 
 }
