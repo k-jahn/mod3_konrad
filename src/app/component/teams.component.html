@@ -1,20 +1,11 @@
-<mat-tab-group>
-  <mat-tab label="Ranking">
 
-  </mat-tab>
-  <mat-tab label="Teams">
     <table class="table">
       <tr *ngFor="let team of teams">
         <td>
           <strong>{{team.name}}</strong>
         </td>
         <td>
-          {{team.rank}}
+          {{team.coach}}
         </td>
       </tr>
     </table>
-  </mat-tab>
-  <mat-tab label="(Detail)">
-
-  </mat-tab>
-</mat-tab-group>
