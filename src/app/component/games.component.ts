@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 // class
 import { Game } from '../class/game';
@@ -26,7 +27,8 @@ export class GamesComponent implements OnInit {
   constructor(
     private gameService: GameService,
     private teamService: TeamService,
-  ) { }
+    private router: Router,
+) { }
 
   ngOnInit() {
     this.gameService.getGames().subscribe(games => {

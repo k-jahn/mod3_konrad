@@ -1,8 +1,8 @@
-// Imports ======================================================================
 /* @import 'bootstrap/dist/css/bootstrap.css'; */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-// vars ==========================================================================
+// import vars
+@import "./app/variables.scss";
 
 
 
@@ -20,4 +20,11 @@ img {
 .pcWrapper {
     max-width: 500px;
     position: relative;
+}
+
+h3 {
+    color: #fff;
+    background-color: $cPrimary;
+    border: 1px 0 solid $cSecondary;
+    box-shadow: 1.5px 0 1.5px rgba(0,0,0,0.87);
 }

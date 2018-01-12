@@ -1,5 +1,6 @@
+// import vars
+@import "../variables.scss";
 
-$headerheight: 56px;
 
 header {
     position: fixed;
@@ -7,8 +8,10 @@ header {
     left: 0;
     right: 0;
     height: $headerheight;
-    background-color: rgba(0, 100, 0, 1);
+    background-color: $cPrimary;
+    color: #fff;
     padding-left: $headerheight;
+    box-shadow: 1.5px 0 1.5px rgba(0,0,0,0.87);
 }
 #logo {
     position: absolute;

@@ -1,7 +1,7 @@
 <!-- todo - make add ngIf -->
 <div>
-    <h2 header-link="mygames">My Games</h2>
-    <table class="table">
+    <h3 header-link="mygames">My Games</h3>
+    <table class="table" (click)="router.navigate(['/game/${game.id}'])">
         <tr *ngFor="let game of myGames">
             <td>
                 <div class="text-center">
@@ -21,9 +21,9 @@
     </table>
 </div>
 <div>
-    <h2 header-link="upcoming">Upcoming</h2>
+    <h3 header-link="upcoming">Upcoming</h3>
     <table class="table">
-        <tr *ngFor="let game of games">
+        <tr *ngFor="let game of games" (click)="router.navigate(['/game/${game.id}'])">
             <td>
                 <div class="text-center">
                     <strong>{{findTeam(game.team1Id).name}}</strong> vs.

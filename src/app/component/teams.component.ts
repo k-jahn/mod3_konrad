@@ -1,5 +1,6 @@
 // library
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 // class
 import { Team } from '../class/team';
@@ -16,7 +17,8 @@ export class TeamsComponent implements OnInit {
   teams: Team[];
 
   constructor(
-    private teamService: TeamService
+    private teamService: TeamService,
+    private router: Router,
   ) { }
 
   ngOnInit() {

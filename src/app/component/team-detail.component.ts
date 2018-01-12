@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-team-detail',
@@ -7,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private location: Location,
+  ) { }
 
   ngOnInit() {
   }
