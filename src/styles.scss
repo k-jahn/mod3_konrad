@@ -10,8 +10,6 @@
 // global styles ====================================================================
 body {
     color: rgba(0,0,0,0.87);
-    height: 100%;
-    width: 100%;
 }
 
 img {
@@ -21,7 +19,7 @@ img {
 
 
 h3 {
-    color: #fff;
+    color: $tPrimary;
     background-color: $cPrimary;
     box-shadow: 2px 0 2px rgba(0,0,0,0.87);
     padding: 3px 16px;

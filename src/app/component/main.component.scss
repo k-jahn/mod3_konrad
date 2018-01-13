@@ -1,19 +1,27 @@
 // import vars
 @import "../variables.scss";
 
+$navheight: 48px;
+$subnavheight: 24px;
 
 .page {
-    position: relative;
-    height: 100%;
+    position: fixed;  
+    top: #{$navheight + $headerheight + $subnavheight};
+    bottom: 0;
+    width: 100vw;
     overflow-y: scroll;
     overflow-x: hidden;
 }
 
 
 .subnav {
-    background-color: $cSecondary;
-    color: #fff;
+    background-color: $cContrast;
+    color: cPrimary;
     box-shadow: 3px 0px 3px rgba(0,0,0,0.87);
     z-index: 100;
-    position: relative;
+    position: fixed;
+    top: #{$navheight + $headerheight};
+    width: 100vw;
+    height: $subnavheight;
 }
+

@@ -10,15 +10,21 @@
 }
 
 header {
+    // position
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: $headerheight;
+    // style
     background-color: $cPrimary;
-    color: #fff;
     box-shadow: 3px 0 3px rgba(0,0,0,0.87);
+    // text
+    color:$tPrimary;
     text-align: center;
+    line-height: $headerheight;
+    font-size: 36px;
+    font-weight:  bold;
 }
 #logo {
     position: absolute;
@@ -44,10 +50,9 @@ main {
     bottom: 0;
     overflow-y: hidden;
 }
-h1 {
-    display: inline;
-    font-size: 24px;
-    line-height: 56px;
+
+svg {
+    fill: $tPrimary;
 }
 
 .nav-link {
