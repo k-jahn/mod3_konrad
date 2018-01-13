@@ -1,0 +1,17 @@
+{
+    "name": "NYSL_Konrad",
+    "description": "Northside Youth Soccer League WebApp",
+    "theme_color": "#033949",
+    "background_color": "#033949",
+    "icons": [
+        {
+            "src": "assets/images/nysl_logo.png",
+            "sizes": "48x48 72x72 96x96 128x128 256x256"
+        }
+    ],
+    "start_url": "main/games",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "lang": "en-US"
+                        
+}
