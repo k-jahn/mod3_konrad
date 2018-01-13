@@ -1,14 +1,18 @@
 // import vars
 @import "../variables.scss";
 
+
 .page {
+    position: relative;
     height: 100%;
     overflow-y: scroll;
 }
 
+
 .subnav {
-    background-color: $cPrimary;
+    background-color: $cSecondary;
     color: #fff;
-    box-shadow: 1.5px 0 1.5px rgba(0,0,0,0.87);
-    z-index: 1;
+    box-shadow: 3px 0px 3px rgba(0,0,0,0.87);
+    z-index: 100;
+    position: relative;
 }

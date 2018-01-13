@@ -10,13 +10,13 @@ header {
     height: $headerheight;
     background-color: $cPrimary;
     color: #fff;
-    padding-left: $headerheight;
-    box-shadow: 1.5px 0 1.5px rgba(0,0,0,0.87);
+    box-shadow: 3px 0 3px rgba(0,0,0,0.87);
+    text-align: center;
 }
 #logo {
     position: absolute;
     top: calc(0.1 * #{$headerheight});
-    left: calc(0.1 * #{$headerheight});
+    right: calc(0.1 * #{$headerheight});
     height: calc(0.8 * #{$headerheight});
     width: calc(0.8 * #{$headerheight});
 

@@ -1,8 +1,8 @@
 <!-- todo - make add ngIf -->
 <div>
     <h3 header-link="mygames">My Games</h3>
-    <table class="table" (click)="router.navigate(['/game/${game.id}'])">
-        <tr *ngFor="let game of myGames">
+    <table class="table">
+        <tr *ngFor="let game of myGames" (click)="router.navigate(['/game/${game.id}'])">
             <td>
                 <div class="text-center">
                     <strong>{{findTeam(game.team1Id).name}}</strong> vs.

@@ -1,13 +1,27 @@
 <h3>Standings</h3>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem quibusdam iure magni molestias aliquid itaque beatae deserunt ab dolore laborum. Optio hic vitae ipsam autem recusandae modi possimus veritatis placeat!
+<table class="table">
+  <tr *ngFor="let team of sortTeams('win')" (click)="router.navigate(['/team/${team.id}'])">
+    <td>
+      <strong>{{team.rank}}</strong>
+    </td>
+   
+    <td>
+      {{team.name}}
+    </td>
+    <td>
+      wins: {{team.win}}
+      <br> losses: {{team.loss}}
+    </td>
+  </tr>
+</table>
 <h3>League</h3>
 <table class="table">
-  <tr *ngFor="let team of teams" (click)="router.navigate(['/team/${team.id}'])">
+  <tr *ngFor="let team of sortTeams('name')" (click)="router.navigate(['/team/${team.id}'])">
     <td>
       <strong>{{team.name}}</strong>
     </td>
     <td>
-      {{team.coach}}
+      coach: {{team.coach}}
     </td>
   </tr>
 </table>

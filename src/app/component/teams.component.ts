@@ -16,6 +16,18 @@ import { TeamService } from '../service/team.service';
 export class TeamsComponent implements OnInit {
   teams: Team[];
 
+  sortTeams(sort: string): Team[] {
+    return this.teams.sort(function(a, b) {
+      switch (typeof Team[sort]) {
+        case 'number':
+          return a[sort] - b[sort];
+        case 'string':
+          return a[sort] < b[sort] ? -1 : 1;
+      }
+    });
+  }
+
+
   constructor(
     private teamService: TeamService,
     private router: Router,
