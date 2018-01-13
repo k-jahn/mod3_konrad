@@ -2,7 +2,7 @@
 <div>
     <h3 header-link="mygames">My Games</h3>
     <table class="table">
-        <tr *ngFor="let game of myGames" (click)="router.navigate(['/game/${game.id}'])">
+        <tr *ngFor="let game of myGames" (click)="router.navigate(['/game/' + game.id.toString()])">
             <td>
                 <div class="text-center">
                     <strong>{{findTeam(game.team1Id).name}}</strong> vs.
@@ -23,7 +23,7 @@
 <div>
     <h3 header-link="upcoming">Upcoming</h3>
     <table class="table">
-        <tr *ngFor="let game of games" (click)="router.navigate(['/game/${game.id}'])">
+        <tr *ngFor="let game of games" (click)="router.navigate(['/game/' + game.id.toString()])">
             <td>
                 <div class="text-center">
                     <strong>{{findTeam(game.team1Id).name}}</strong> vs.

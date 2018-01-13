@@ -1,6 +1,6 @@
 <h3>Standings</h3>
 <table class="table">
-  <tr *ngFor="let team of sortTeams('win')" (click)="router.navigate(['/team/${team.id}'])">
+  <tr *ngFor="let team of sortTeams('win')" (click)="router.navigate(['/team/' + team.id.toString()])">
     <td>
       <strong>{{team.rank}}</strong>
     </td>
@@ -16,7 +16,7 @@
 </table>
 <h3>League</h3>
 <table class="table">
-  <tr *ngFor="let team of sortTeams('name')" (click)="router.navigate(['/team/${team.id}'])">
+  <tr *ngFor="let team of sortTeams('name')" (click)="router.navigate(['/team/' + team.id.toString()])">
     <td>
       <strong>{{team.name}}</strong>
     </td>

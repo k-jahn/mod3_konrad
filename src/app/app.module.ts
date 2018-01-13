@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // ng.material
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 // firebase
 import { AngularFireModule } from 'angularfire2';
@@ -27,6 +28,7 @@ import { GameService } from './service/game.service';
 import { TeamService } from './service/team.service';
 // modules
 import { AppRoutingModule } from './app-routing.module';
+import { MenuComponent } from './component/menu.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { AppRoutingModule } from './app-routing.module';
     MainComponent,
     TeamDetailComponent,
     TeamsComponent,
+    MenuComponent,
   ],
   imports: [
     AngularFireAuthModule,
@@ -45,6 +48,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    MatSidenavModule,
     MatTabsModule,
   ],
   providers: [

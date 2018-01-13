@@ -1,6 +1,13 @@
 // import vars
 @import "../variables.scss";
 
+.sidenavContainer {
+    height: 100vh;
+}
+
+.sidenavMenu {
+    width: 80vw;
+}
 
 header {
     position: fixed;
@@ -16,9 +23,17 @@ header {
 #logo {
     position: absolute;
     top: calc(0.1 * #{$headerheight});
-    right: calc(0.1 * #{$headerheight});
+    right: calc(0.2 * #{$headerheight});
     height: calc(0.8 * #{$headerheight});
     width: calc(0.8 * #{$headerheight});
+
+}
+#menu {
+    position: absolute;
+    top: calc(0.1 * #{$headerheight});
+    left: calc(0.2 * #{$headerheight});
+    height: calc(0.8 * #{$headerheight});
+    width: calc(0.6 * #{$headerheight});
 
 }
 main {

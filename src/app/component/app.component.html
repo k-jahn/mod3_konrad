@@ -1,9 +1,21 @@
-<header>
-  <span class="logoWrapper" (click)="goTo(['/main/home'])">
-    <img src="./assets/images/nysl_logo.png" alt="logo" title="logo" id="logo">
-  </span>
-  <h1>{{title}}</h1>
-</header>
-<main>
-  <router-outlet></router-outlet>
-</main>
+<mat-sidenav-container class="sidenavContainer">
+  <mat-sidenav #sidenav mode="over" class="sidenavMenu">
+    <div>
+      <app-menu></app-menu>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <header>
+      <span class="logoWrapper" (click)="goTo(['/main/home'])">
+        <img src="./assets/images/nysl_logo.png" alt="logo" title="logo" id="logo">
+      </span>
+      <span class="logoWrapper" (click)="sidenav.open()">
+        <img src="./assets/images/three-bars.svg" alt="logo" title="menu" id="menu">
+      </span>
+      <h1>{{title}}</h1>
+    </header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
