@@ -10,6 +10,9 @@ export class AppComponent {
   public title = '';
   constructor(
     private router: Router
-  ) {
+  ) { }
+
+  goTo(path): void {
+    this.router.navigate(path);
   }
 }

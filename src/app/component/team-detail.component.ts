@@ -21,4 +21,7 @@ export class TeamDetailComponent implements OnInit {
     this.app.title = 'Team Detail';
   }
 
+  goBack(): void {
+    this.location.back();
+  }
 }

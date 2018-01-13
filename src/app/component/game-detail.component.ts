@@ -20,4 +20,8 @@ export class GameDetailComponent implements OnInit {
     this.app.title = 'Game Detail';
   }
 
+  goBack(): void {
+    this.location.back();
+  }
+
 }
