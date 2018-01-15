@@ -31,6 +31,7 @@
             <tr *ngFor="let game of games" (click)="router.navigate(['/game/' + game.id.toString()])">
                 <td>
                     <div class="text-center">
+                        {{game.name}}: 
                         <strong>{{findTeam(game.team1Id).name}}</strong> vs.
                         <strong>{{findTeam(game.team2Id).name}}</strong>
                     </div>

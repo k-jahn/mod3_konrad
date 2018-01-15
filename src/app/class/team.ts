@@ -6,5 +6,7 @@ export class Team {
     win: number;
     loss: number;
     coach: string;
-    age: string;
+    goals_scored: number;
+    goals_taken: number;
+    home: string;
 }

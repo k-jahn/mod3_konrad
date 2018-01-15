@@ -1,7 +1,43 @@
-<p>
-  team-detail works!
-</p>
-
-<button (click)="goBack()">
-  back
-</button>
+<div *ngIf="team">
+  <h3>Stats</h3>
+  <p>
+    <strong>rank: </strong>
+    {{team.rank}}
+  </p>
+  <p>
+    <strong>wins: </strong>
+    {{team.win}}
+    <strong> losses: </strong>
+    {{team.loss}}
+  </p>
+  <h3>Information</h3>
+  <p>
+    <strong>coach: </strong>
+    {{team.coach}}
+  </p>
+  <p>
+    <strong>home field: </strong>
+    {{team.home}}
+  </p>
+  <h3>Upcoming Games</h3>
+  <table class="table">
+    <tbody>
+      <tr *ngFor="let game of games"  (click)="router.navigate(['/game/' + game.id.toString()])">
+        <td>
+          <div class="text-center">
+            <span class="homeTeam"><strong>{{findTeam(game.team1Id).name}}</strong></span> vs.
+            <strong>{{findTeam(game.team2Id).name}}</strong>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              {{game.date}}, {{game.time}}
+            </div>
+            <div class="col-6 text-right">
+              {{game.location}}
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

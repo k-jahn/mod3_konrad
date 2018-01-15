@@ -1,6 +1,7 @@
-// Team class definintion
+// Game class definintion
 export class Game {
     id: number;
+    name: string;
     date: string;
     time: string;
     location: string;

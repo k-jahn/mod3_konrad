@@ -18,5 +18,16 @@ export class GameService {
   getGames(): Observable<Game[]> {
     return of(GAMES);
   }
-
+  getTeamGames(teamId: number): Observable<Game[]> {
+    return of(GAMES
+      .filter(game => game.team1Id === teamId || game.team2Id === teamId)
+      .map(game => {
+        if (game.team1Id !== teamId) {
+          game.team2Id = game.team1Id;
+          game.team1Id = teamId;
+        }
+        return game;
+       })
+    );
+  }
 }

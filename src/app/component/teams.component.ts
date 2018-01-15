@@ -34,7 +34,7 @@ export class TeamsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.teamService.getTeams().subscribe(teams => this.teams = teams);
+    this.teamService.getTeams().subscribe(teams => this.teams = teams.filter(team => team.id !== 0));
   }
 
 }
