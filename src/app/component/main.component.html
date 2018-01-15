@@ -1,5 +1,5 @@
 
-<mat-tab-group [(selectedIndex)]="selectedIndex">
+<mat-tab-group [(selectedIndex)]="selectedIndex" id="tabNav">
   <mat-tab label="Home">
     <div (touchstart)="swipe($event, 'start')" (touchend)="swipe($event, 'end')">
       <app-home></app-home>
