@@ -25,3 +25,25 @@ h3 {
     padding: 3px 16px;
     margin-top: 4px;
 }
+
+p,h4,dt,dd {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+// overwriting material styles
+
+.mat-ink-bar {
+    background-color: $cContrast !important;
+    height: $navheight !important; 
+}
+.mat-tab-label {
+    color: $cPrimary !important;
+    font-weight: bold !important;
+    z-index: 200;
+    opacity: 1 !important;
+}
+.mat-tab-group.mat-primary .mat-tab-label:focus {
+    background-color: transparent;
+}

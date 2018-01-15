@@ -1,10 +1,7 @@
-<!-- todo - make add ngIf -->
-<div class="subnav">
-    <app-toc-subnav></app-toc-subnav>
-</div>
 
-<div class="page" [scrollTop]="scroll">
-    <div>
+
+<div class="page" [scrollTop]="scroll" (scroll)="test()">
+    <ng-container>
         <h3 header-link="mygames">My Games</h3>
         <table class="table">
             <tbody>
@@ -28,26 +25,25 @@
                 </tr>
             </tbody>
         </table>
-    <div>
-        <h3 header-link="upcoming">Upcoming</h3>
-        <table class="table">
-            <tr *ngFor="let game of games" (click)="router.navigate(['/game/' + game.id.toString()])">
-                <td>
-                    <div class="text-center">
-                        {{game.name}}: 
-                        <strong>{{findTeam(game.team1Id).name}}</strong> vs.
-                        <strong>{{findTeam(game.team2Id).name}}</strong>
+    </ng-container>
+    <h3 header-link="upcoming">Upcoming</h3>
+    <table class="table">
+        <tr *ngFor="let game of games" (click)="router.navigate(['/game/' + game.id.toString()])">
+            <td>
+                <div class="text-center">
+                    {{game.name}}: 
+                    <strong>{{findTeam(game.team1Id).name}}</strong> vs.
+                    <strong>{{findTeam(game.team2Id).name}}</strong>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        {{game.date}}, {{game.time}}
                     </div>
-                    <div class="row">
-                        <div class="col-6">
-                            {{game.date}}, {{game.time}}
-                        </div>
-                        <div class="col-6 text-right">
-                            {{game.location}}
-                        </div>
+                    <div class="col-6 text-right">
+                        {{game.location}}
                     </div>
-                </td>
-            </tr>
-        </table>
-    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
 </div>

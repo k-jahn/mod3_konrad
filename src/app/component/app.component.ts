@@ -17,4 +17,7 @@ export class AppComponent {
   goTo(path): void {
     this.router.navigate(path);
   }
+  goBack(): void {
+    this.location.back();
+  }
 }

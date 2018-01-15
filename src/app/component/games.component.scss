@@ -1,14 +1,7 @@
 // import vars
 @import "../variables.scss";
+@import "./main.pagediv.scss";
 
-
-.page {
-    height: calc(100vh - #{$navheight + $headerheight + $subnavheight});
-    bottom: 0;
-    width: 100vw;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
 
 
 .homeTeam {

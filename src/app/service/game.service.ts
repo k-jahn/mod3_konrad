@@ -31,6 +31,6 @@ export class GameService {
     );
   }
   public getGame(id: number): Observable<Game> {
-    return of(GAMES.filter(game => game.id === id)[0]);
+    return of(GAMES.filter(team => team.id === id)[0]);
   }
 }
