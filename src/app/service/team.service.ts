@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 // rxjs
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of'; // dev, remove when no longe needed
+import {  map, tap } from 'rxjs/operators';
 
 // class
 import { Team } from '../class/team';
@@ -17,6 +18,10 @@ export class TeamService {
 
   getTeams(): Observable<Team[]> {
     return of(TEAMS);
+  }
+
+  getTeam(id: number): Observable<Team> {
+    return of(TEAMS).map(teams => teams.filter(team => team.id === id))[0];
   }
 
 }

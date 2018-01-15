@@ -1,3 +1,17 @@
-div {
+
+// import vars
+@import "../variables.scss";
+
+.page div {
     padding: 0 0.5em;
+}
+
+
+.page {
+    height: calc(100vh - #{$navheight + $headerheight + $subnavheight});
+    bottom: 0;
+    width: 100vw;
+    overflow-y: scroll;
+
+    overflow-x: hidden;
 }

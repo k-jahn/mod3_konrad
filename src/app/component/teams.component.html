@@ -1,27 +1,30 @@
-<h3>Standings</h3>
-<table class="table">
-  <tr *ngFor="let team of sortTeams('win')" (click)="router.navigate(['/team/' + team.id.toString()])">
-    <td>
-      <strong>{{team.rank}}</strong>
-    </td>
-   
-    <td>
-      {{team.name}}
-    </td>
-    <td>
-      wins: {{team.win}}
-      <br> losses: {{team.loss}}
-    </td>
-  </tr>
-</table>
-<h3>League</h3>
-<table class="table">
-  <tr *ngFor="let team of sortTeams('name')" (click)="router.navigate(['/team/' + team.id.toString()])">
-    <td>
-      <strong>{{team.name}}</strong>
-    </td>
-    <td>
-      coach: {{team.coach}}
-    </td>
-  </tr>
-</table>
+<app-toc-subnav></app-toc-subnav>
+<div class="page">
+  <h3>Standings</h3>
+  <table class="table">
+    <tr *ngFor="let team of sortTeams('win')" (click)="router.navigate(['/team/' + team.id.toString()])">
+      <td>
+        <strong>{{team.rank}}</strong>
+      </td>
+    
+      <td>
+        {{team.name}}
+      </td>
+      <td>
+        wins: {{team.win}}
+        <br> losses: {{team.loss}}
+      </td>
+    </tr>
+  </table>
+  <h3>League</h3>
+  <table class="table">
+    <tr *ngFor="let team of sortTeams('name')" (click)="router.navigate(['/team/' + team.id.toString()])">
+      <td>
+        <strong>{{team.name}}</strong>
+      </td>
+      <td>
+        coach: {{team.coach}}
+      </td>
+    </tr>
+  </table>
+</div>

@@ -12,12 +12,8 @@ import { TeamsComponent } from './component/teams.component';
 
 // route definitions ----------------------------------------
 const routes: Routes = [
-  { path: '', redirectTo: '/main/games', pathMatch: 'full' },
-  { path: 'main', component: MainComponent, children: [
-    { path: 'home', component: HomeComponent },
-    { path: 'games', component: GamesComponent },
-    { path: 'teams', component: TeamsComponent },
-  ]},
+  { path: '', redirectTo: '/main', pathMatch: 'full' },
+  { path: 'main', component: MainComponent },
   { path: 'game/:id', component: GameDetailComponent },
   { path: 'team/:id', component: TeamDetailComponent },
 ];

@@ -29,6 +29,8 @@ import { TeamService } from './service/team.service';
 // modules
 import { AppRoutingModule } from './app-routing.module';
 import { MenuComponent } from './component/menu.component';
+import { MainLocationService } from './service/main-location.service';
+import { TocSubnavComponent } from './component/toc-subnav.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { MenuComponent } from './component/menu.component';
     TeamDetailComponent,
     TeamsComponent,
     MenuComponent,
+    TocSubnavComponent,
   ],
   imports: [
     AngularFireAuthModule,
@@ -55,6 +58,7 @@ import { MenuComponent } from './component/menu.component';
     EventService,
     GameService,
     TeamService,
+    MainLocationService,
   ],
   bootstrap: [AppComponent]
 })

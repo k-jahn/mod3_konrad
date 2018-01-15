@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
   styleUrls: ['./game-detail.component.css']
 })
 export class GameDetailComponent implements OnInit {
-
+  scroll = 0;
   constructor(
     private router: Router,
     private location: Location,
