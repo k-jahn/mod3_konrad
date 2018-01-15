@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'main', component: MainComponent },
   { path: 'game/:id', component: GameDetailComponent },
   { path: 'team/:id', component: TeamDetailComponent },
+  { path: '**', redirectTo: '/main', pathMatch: 'full' },
 ];
 // ------------------------------------------------------------------
 

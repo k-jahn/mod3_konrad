@@ -15,10 +15,10 @@ export class GameService {
 
   constructor() { }
 
-  getGames(): Observable<Game[]> {
+  public getGames(): Observable<Game[]> {
     return of(GAMES);
   }
-  getTeamGames(teamId: number): Observable<Game[]> {
+  public getTeamGames(teamId: number): Observable<Game[]> {
     return of(GAMES
       .filter(game => game.team1Id === teamId || game.team2Id === teamId)
       .map(game => {
@@ -29,5 +29,8 @@ export class GameService {
         return game;
        })
     );
+  }
+  public getGame(id: number): Observable<Game> {
+    return of(GAMES.filter(game => game.id === id)[0]);
   }
 }

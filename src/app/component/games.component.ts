@@ -19,10 +19,9 @@ export class GamesComponent implements OnInit, OnDestroy {
   myGames: Game[];
   games: Game[];
   teams: Team[];
-  scroll = 50;
+  scroll = 0;
 
   test() {
-    console.log(this.scroll)
   }
 
   private findTeam(id: number): Team {
@@ -38,17 +37,18 @@ export class GamesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // set scroll
-    // this.scroll = this.locationService.scroll.games;
+    this.scroll = this.locationService.scroll.games;
     // get data
     this.gameService.getGames().subscribe(games => {
       this.games = games;
-      this.myGames = games.filter((x, i) => i % 2);
+    });
+    this.gameService.getTeamGames(1).subscribe(games => {
+      this.myGames = games;
     });
     this.teamService.getTeams().subscribe(teams => this.teams = teams);
   }
   ngOnDestroy() {
     // save scroll
-    console.log(this.scroll);
-    this.locationService.scroll.games = this.scroll;
+    this.locationService.scroll.games = this.scroll = document.querySelector('.page').scrollTop;
   }
 }
