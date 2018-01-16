@@ -16,7 +16,7 @@ header {
     left: 0;
     right: 0;
     height: $headerheight;
-    z-index: 50;
+    z-index: 500;
     // style
     background-color: $cPrimary;
     box-shadow: inset 0 1px 1px rgba(255,255,255,0.5), 0px 2px 2px rgba(0,0,0,0.6);
@@ -59,6 +59,21 @@ main {
     bottom: 0;
     overflow-y: hidden;
 }
+
+.overlay {
+    position: fixed;
+    z-index: 400;
+    top: $headerheight;
+    bottom: 0;
+    width: 100vw;
+    background-color: $cBackground;
+    display: none;
+}
+.overlay.active {
+    display: block;
+}
+
+
 
 svg {
     fill: $tPrimary;

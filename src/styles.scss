@@ -6,7 +6,6 @@
 
 
 
-
 // global styles ====================================================================
 body {
     color: rgba(0,0,0,0.87);
@@ -51,6 +50,7 @@ p,h4,dt,dd {
     z-index: 200;
     opacity: 1 !important;
 }
+
 .mat-tab-group.mat-primary .mat-tab-label:focus {
     background-color: transparent !important;
 }

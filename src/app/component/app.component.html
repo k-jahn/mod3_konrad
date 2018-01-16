@@ -20,7 +20,11 @@
       </span>
     </header>
     <main>
-      <router-outlet></router-outlet>
+      <app-main></app-main>
+      <!-- modal overlay -->
+      <div class="overlay" [ngClass]="{active: url}">
+        <router-outlet></router-outlet>
+      </div>
     </main>
   </mat-sidenav-content>
 </mat-sidenav-container>

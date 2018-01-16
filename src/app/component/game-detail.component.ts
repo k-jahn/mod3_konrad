@@ -31,7 +31,7 @@ export class GameDetailComponent implements OnInit {
     private gameService: GameService,
     private teamService: TeamService
   ) { }
-  private findTeam(id: number): Team {
+  public findTeam(id: number): Team {
     return this.teams.filter(x => x.id === id)[0];
   }
 
