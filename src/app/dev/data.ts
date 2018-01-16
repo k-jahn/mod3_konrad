@@ -13,6 +13,7 @@ export const GAMES: Game[] = [
         location: 'Yeager Elementary',
         team1Id: 1,
         team2Id: 3,
+        referee: 'Jane Goodall',
     },
     {
         id: 1,
@@ -22,6 +23,7 @@ export const GAMES: Game[] = [
         location: 'North Elementary',
         team1Id: 2,
         team2Id: 5,
+        referee: 'Jane Goodall',
     },
     {
         id: 2,
@@ -31,6 +33,7 @@ export const GAMES: Game[] = [
         location: 'South Elementary',
         team1Id: 3,
         team2Id: 2,
+        referee: 'Albert Einstein ',
     },
     {
         id: 3,
@@ -40,6 +43,7 @@ export const GAMES: Game[] = [
         location: 'Hart Elementary',
         team1Id: 4,
         team2Id: 1,
+        referee: 'Antonie van Leeuwenhoek',
     },
     {
         id: 4,
@@ -49,6 +53,7 @@ export const GAMES: Game[] = [
         location: 'South Elementary',
         team1Id: 4,
         team2Id: 1,
+        referee: 'Paul Hund',
     },
     {
         id: 5,
@@ -58,6 +63,7 @@ export const GAMES: Game[] = [
         location: 'Hart Elementary',
         team1Id: 4,
         team2Id: 1,
+        referee: 'Francis Crick',
     },
     {
         id: 6,
@@ -67,6 +73,7 @@ export const GAMES: Game[] = [
         location: 'South Elementary',
         team1Id: 0,
         team2Id: 0,
+        referee: 'Kurt Gödel',
     },
     {
         id: 7,
@@ -76,6 +83,7 @@ export const GAMES: Game[] = [
         location: 'AW Cox Elementary',
         team1Id: 0,
         team2Id: 0,
+        referee: 'Antoine Lavoisier',
     },
     {
         id: 8,
@@ -85,6 +93,7 @@ export const GAMES: Game[] = [
         location: 'E Adams Elementary',
         team1Id: 0,
         team2Id: 0,
+        referee: 'M.C. Escher',
     },
 
 

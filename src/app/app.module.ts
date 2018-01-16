@@ -22,15 +22,15 @@ import { HomeComponent } from './component/home.component';
 import { MainComponent } from './component/main.component';
 import { TeamDetailComponent } from './component/team-detail.component';
 import { TeamsComponent } from './component/teams.component';
+import { MenuComponent } from './component/menu.component';
+import { TocSubnavComponent } from './component/toc-subnav.component';
 // services
 import { EventService } from './service/event.service';
 import { GameService } from './service/game.service';
+import { MainLocationService } from './service/main-location.service';
 import { TeamService } from './service/team.service';
 // modules
 import { AppRoutingModule } from './app-routing.module';
-import { MenuComponent } from './component/menu.component';
-import { MainLocationService } from './service/main-location.service';
-import { TocSubnavComponent } from './component/toc-subnav.component';
 
 @NgModule({
   declarations: [

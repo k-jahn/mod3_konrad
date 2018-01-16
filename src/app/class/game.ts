@@ -7,4 +7,5 @@ export class Game {
     location: string;
     team1Id: number;
     team2Id: number;
+    referee: string;
 }

@@ -17,11 +17,14 @@ import { MainLocationService } from '../service/main-location.service';
 })
 export class TeamsComponent implements OnInit, OnDestroy {
   teams: Team[];
+  teamsByRank: Team[];
   scroll = 0;
 
   sortTeams(sort: string): Team[] {
-    return this.teams.sort(function(a, b) {
-      switch (typeof Team[sort]) {
+    console.log('sorting');
+    const out = JSON.parse(JSON.stringify(this.teams));
+    return out.sort(function(a, b) {
+      switch (typeof this.teams[0][sort]) {
         case 'number':
           return a[sort] - b[sort];
         case 'string':
@@ -41,7 +44,10 @@ export class TeamsComponent implements OnInit, OnDestroy {
     // set scroll
     this.scroll = this.locationService.scroll.home;
     // get Teams
-    this.teamService.getTeams().subscribe(teams => this.teams = teams.filter(team => team.id !== 0));
+    this.teamService.getTeams().subscribe(teams => {
+      this.teams = teams.filter(team => team.id !== 0);
+      this.teamsByRank = this.teams.sort((a, b) => a.rank - b.rank);
+    });
   }
 
   ngOnDestroy() {

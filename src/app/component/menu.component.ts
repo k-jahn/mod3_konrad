@@ -14,7 +14,8 @@ export class MenuComponent implements OnInit {
     {text: 'MenuItem 5'},
     {text: 'MenuItem 6'},
     {text: 'MenuItem 7'},
-  ]
+  ];
+
   constructor() { }
 
   ngOnInit() {

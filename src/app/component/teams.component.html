@@ -1,24 +1,21 @@
 
 <div class="page" [scrollTop]="scroll">
   <h3>Standings</h3>
-  <table class="table">
-    <tr *ngFor="let team of sortTeams('win')" (click)="router.navigate(['/team/' + team.id.toString()])">
+  <table>
+    <tr *ngFor="let team of teamsByRank">
       <td>
-        <strong>{{team.rank}}</strong>
-      </td>
+        {{team.rank}}.
+      
     
-      <td>
-        {{team.name}}
-      </td>
-      <td>
-        wins: {{team.win}}
-        <br> losses: {{team.loss}}
+        <strong>{{team.name}}</strong>
+        win: {{team.win}}
+        loss: {{team.loss}}
       </td>
     </tr>
   </table>
   <h3>League</h3>
   <table class="table">
-    <tr *ngFor="let team of sortTeams('name')" (click)="router.navigate(['/team/' + team.id.toString()])">
+    <tr *ngFor="let team of teams" (click)="router.navigate(['/team/' + team.id.toString()])">
       <td>
         <strong>{{team.name}}</strong>
       </td>
