@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TocSubnavComponent } from './toc-subnav.component';
+import { DetailGameComponent } from './detail-game.component';
 
-describe('TocSubnavComponent', () => {
-  let component: TocSubnavComponent;
-  let fixture: ComponentFixture<TocSubnavComponent>;
+describe('DetailGameComponent', () => {
+  let component: DetailGameComponent;
+  let fixture: ComponentFixture<DetailGameComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TocSubnavComponent ]
+      declarations: [ DetailGameComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TocSubnavComponent);
+    fixture = TestBed.createComponent(DetailGameComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

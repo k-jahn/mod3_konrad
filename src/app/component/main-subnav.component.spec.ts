@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EmptyDetailComponent } from './empty-detail.component';
+import { MainSubnavComponent } from './main-subnav.component';
 
-describe('EmptyDetailComponent', () => {
-  let component: EmptyDetailComponent;
-  let fixture: ComponentFixture<EmptyDetailComponent>;
+describe('MainSubnavComponent', () => {
+  let component: MainSubnavComponent;
+  let fixture: ComponentFixture<MainSubnavComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EmptyDetailComponent ]
+      declarations: [ MainSubnavComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EmptyDetailComponent);
+    fixture = TestBed.createComponent(MainSubnavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

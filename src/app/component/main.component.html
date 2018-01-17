@@ -11,7 +11,7 @@
       News    
     </ng-template>
     <div (touchstart)="swipe($event, 'start')" (touchend)="swipe($event, 'end')">
-      <app-home></app-home>
+      <app-main-news></app-main-news>
     </div>
   </mat-tab>
   <mat-tab>
@@ -22,7 +22,7 @@
       Games
     </ng-template>    
     <div (touchstart)="swipe($event, 'start')" (touchend)="swipe($event, 'end')">
-      <app-games></app-games>
+      <app-main-games></app-main-games>
     </div>
     </mat-tab>
     <mat-tab>
@@ -41,10 +41,10 @@
         Teams
       </ng-template>
       <div (touchstart)="swipe($event, 'start')" (touchend)="swipe($event, 'end')">
-        <app-teams></app-teams>
+        <app-main-teams></app-main-teams>
       </div>
     </mat-tab>
   </mat-tab-group>
-  <app-toc-subnav></app-toc-subnav>
+  <app-main-subnav></app-main-subnav>
   
   

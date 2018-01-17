@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Link } from '../class/link';
 
 @Component({
-  selector: 'app-toc-subnav',
-  templateUrl: './toc-subnav.component.html',
-  styleUrls: ['./toc-subnav.component.scss']
+  selector: 'app-main-subnav',
+  templateUrl: './main-subnav.component.html',
+  styleUrls: ['./main-subnav.component.scss']
 })
-export class TocSubnavComponent implements OnInit {
+export class MainSubnavComponent implements OnInit {
   links: Link[] = [
     {
       path: '',

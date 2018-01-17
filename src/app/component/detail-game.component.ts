@@ -14,11 +14,11 @@ import { Team } from '../class/team';
 
 
 @Component({
-  selector: 'app-game-detail',
-  templateUrl: './game-detail.component.html',
-  styleUrls: ['./game-detail.component.scss']
+  selector: 'app-detail-game',
+  templateUrl: './detail-game.component.html',
+  styleUrls: ['./detail-game.component.scss']
 })
-export class GameDetailComponent implements OnInit {
+export class DetailGameComponent implements OnInit {
   gameId: number;
   game: Game;
   teams: Team[];
@@ -45,7 +45,7 @@ export class GameDetailComponent implements OnInit {
     // get upcoming games
     this.gameService.getGame(this.gameId).subscribe(game => {
       this.game = game;
-      this.app.title = game.name;
+      this.app.setTitle.next(game.name);
     });
   }
 

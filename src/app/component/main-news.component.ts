@@ -7,11 +7,11 @@ import { Event } from '../class/event';
 import { EventService } from '../service/event.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-main-news',
+  templateUrl: './main-news.component.html',
+  styleUrls: ['./main-news.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class MainNewsComponent implements OnInit, OnDestroy {
   events: Event[];
 
   constructor(

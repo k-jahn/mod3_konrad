@@ -6,7 +6,7 @@
 }
 
 .sidenavMenu {
-    width: 80vw;
+    width: $menuwidth;
 }
 
 header {
@@ -72,6 +72,8 @@ main {
     width: 100vw;
     background-color: $cBackground;
     display: none;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 .overlay.active {
     display: block;

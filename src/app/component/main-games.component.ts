@@ -10,11 +10,12 @@ import { GameService } from '../service/game.service';
 import { TeamService } from '../service/team.service';
 
 @Component({
-  selector: 'app-games',
-  templateUrl: './games.component.html',
-  styleUrls: ['./games.component.scss']
+  selector: 'app-main-games',
+  templateUrl: './main-games.component.html',
+  styleUrls: ['./main-games.component.scss']
 })
-export class GamesComponent implements OnInit, OnDestroy {
+
+export class MainGamesComponent implements OnInit, OnDestroy {
   myGames: Game[];
   games: Game[];
   teams: Team[];

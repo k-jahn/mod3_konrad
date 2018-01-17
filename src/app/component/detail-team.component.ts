@@ -12,11 +12,11 @@ import { Team } from '../class/team';
 import { Game } from '../class/game';
 
 @Component({
-  selector: 'app-team-detail',
-  templateUrl: './team-detail.component.html',
-  styleUrls: ['./team-detail.component.scss']
+  selector: 'app-detail-team',
+  templateUrl: './detail-team.component.html',
+  styleUrls: ['./detail-team.component.scss']
 })
-export class TeamDetailComponent implements OnInit {
+export class DetailTeamComponent implements OnInit {
   teamId: number;
   team: Team;
   games: Game[];
@@ -44,7 +44,7 @@ export class TeamDetailComponent implements OnInit {
     this.teamService.getTeams().subscribe(teams => {
       this.teams = teams;
       this.team = this.findTeam(this.teamId);
-      this.app.title = this.team.name;
+      this.app.setTitle.next(this.team.name);
     });
     // get upcoming games
     this.gameService.getTeamGames(this.teamId).subscribe(games => this.games = games);

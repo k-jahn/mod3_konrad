@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { AppComponent } from './app.component';
 
 import { Link } from '../class/link';
 
@@ -72,11 +71,9 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private app: AppComponent,
   ) { }
 
   ngOnInit() {
-    this.app.title = 'NYSL';
   }
   ngOnDestroy() {
   }

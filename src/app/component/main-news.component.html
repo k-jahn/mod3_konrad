@@ -1,0 +1,13 @@
+
+<div class="page">
+  <h3>Upcoming Events</h3>
+  <div>
+    <dl>
+      <ng-container *ngFor="let event of events">
+        <dt>{{event.date}}</dt>
+        <dd>{{event.description}}</dd>  
+      </ng-container>
+    </dl>
+  </div>
+  
+</div>

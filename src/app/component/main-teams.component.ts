@@ -10,11 +10,11 @@ import { TeamService } from '../service/team.service';
 
 
 @Component({
-  selector: 'app-teams',
-  templateUrl: './teams.component.html',
-  styleUrls: ['./teams.component.scss']
+  selector: 'app-main-teams',
+  templateUrl: './main-teams.component.html',
+  styleUrls: ['./main-teams.component.scss']
 })
-export class TeamsComponent implements OnInit, OnDestroy {
+export class MainTeamsComponent implements OnInit, OnDestroy {
   teams: Team[];
   teamsByRank: Team[];
   scroll = 0;

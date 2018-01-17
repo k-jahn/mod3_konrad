@@ -4,6 +4,15 @@
 // import vars
 @import "./app/variables.scss";
 
+// page div for main screens =========================================================================
+.page {
+    margin-top: $subnavheight;
+    height: calc(100vh - #{$navheight + $headerheight + $subnavheight});
+    width: 100vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 
 
 // global styles ====================================================================
@@ -28,17 +37,12 @@ p,h4,dt,dd {
     padding-right: 1rem;
 }
 
-
-
-.table tr {
-    background-color: rgba($cPrimary,0.3);
-}
-
 .noBackground {
     background-color: transparent !important;
 }
 
-// overwrite material styles
+// overwrite material styles ===========================================================================
+// todo: replace with mixin
 .mat-ink-bar {
     background-color: $cContrast2 !important;
     height: calc(#{$navheight}) !important; 

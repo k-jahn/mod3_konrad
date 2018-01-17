@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location, NgClass } from '@angular/common';
 import { MatSidenav } from '@angular/material/sidenav';
-
-
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +10,12 @@ import { MatSidenav } from '@angular/material/sidenav';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public title = '';
+  private title = '';
   url = '';
-  @ViewChild('sidenav') public menu: MatSidenav;
 
+  // expose sidnav to binding
+  @ViewChild('sidenav') public menu: MatSidenav;
+  public setTitle = new BehaviorSubject<string>('');
 
   constructor(
     private router: Router,
@@ -22,8 +23,8 @@ export class AppComponent implements OnInit {
   ) {
     router.events.subscribe((val) => {
         this.url = location.path();
-        console.log(this.url);
     });
+    this.setTitle.subscribe(x => this.title = x);
   }
 
   goTo(path): void {

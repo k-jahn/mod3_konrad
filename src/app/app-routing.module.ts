@@ -4,17 +4,17 @@ import { RouterModule, Routes } from '@angular/router';
 
 // components
 import { MainComponent } from './component/main.component';
-import { GameDetailComponent } from './component/game-detail.component';
-import { TeamDetailComponent } from './component/team-detail.component';
-import { HomeComponent } from './component/home.component';
-import { GamesComponent } from './component/games.component';
-import { TeamsComponent } from './component/teams.component';
+import { DetailGameComponent } from './component/detail-game.component';
+import { DetailTeamComponent } from './component/detail-team.component';
+import { DetailEmptyComponent } from './component/detail-empty.component';
+import { DetailAboutComponent } from './component/detail-about.component';
 
 // route definitions ----------------------------------------
 const routes: Routes = [
-  { path: '', component: MainComponent },
-  { path: 'game/:id', component: GameDetailComponent },
-  { path: 'team/:id', component: TeamDetailComponent },
+  { path: '', component: DetailEmptyComponent },
+  { path: 'about', component: DetailAboutComponent},
+  { path: 'game/:id', component: DetailGameComponent },
+  { path: 'team/:id', component: DetailTeamComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 // ------------------------------------------------------------------
