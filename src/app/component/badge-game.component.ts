@@ -13,7 +13,9 @@ import { Game } from '../class/game';
 })
 export class BadgeGameComponent implements OnInit {
   @Input() gameId: number;
+  @Input() format: object;
   game: Game;
+
 
   constructor(
     private gameService: GameService,

@@ -5,4 +5,5 @@
 
 .gameBadge {
     @include badge;
+    text-align: left;
 }

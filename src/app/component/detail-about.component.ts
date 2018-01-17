@@ -12,9 +12,9 @@ export class DetailAboutComponent implements OnInit {
   constructor(
     private app: AppComponent
   ) {
-    this.app.setTitle.next('About NYSL');
   }
   ngOnInit() {
+    Promise.resolve(null).then(() => this.app.setTitle.next('About NYSL'));
   }
 
 }

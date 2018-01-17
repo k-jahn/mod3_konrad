@@ -44,7 +44,7 @@ export class DetailTeamComponent implements OnInit {
     this.teamService.getTeams().subscribe(teams => {
       this.teams = teams;
       this.team = this.findTeam(this.teamId);
-      this.app.setTitle.next(this.team.name);
+      Promise.resolve(null).then(() => this.app.setTitle.next(this.team.name));
     });
     // get upcoming games
     this.gameService.getTeamGames(this.teamId).subscribe(games => this.games = games);

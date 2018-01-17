@@ -5,4 +5,13 @@
 
 .teamBadge {
     @include badge;
+    p {
+        margin: 0em 0;
+        padding: 0;
+    }
+    text-align: left;
+}
+
+.score div {
+    padding: 0;
 }

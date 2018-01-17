@@ -39,7 +39,7 @@ export class DetailGameComponent implements OnInit {
     // get game
     this.gameService.getGame(this.gameId).subscribe(game => {
       this.game = game;
-      this.app.setTitle.next(this.game.name);
+      Promise.resolve(null).then(() => this.app.setTitle.next(this.game.name));
     });
   }
 

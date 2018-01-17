@@ -3,6 +3,7 @@
     Loading...
   </div>
   <div *ngIf="game" (click)="router.navigate(['/game/', game.id.toString()])">
-    {{game.name}}
+    <strong>{{game.name}}</strong>
+
   </div>
 </div>

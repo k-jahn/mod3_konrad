@@ -11,6 +11,7 @@ import { Team } from '../class/team';
 })
 export class BadgeTeamComponent implements OnInit {
   @Input() teamId: number;
+  @Input() format: object;
   team: Team;
 
   constructor(
