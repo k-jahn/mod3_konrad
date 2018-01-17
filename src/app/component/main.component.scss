@@ -1,2 +1,11 @@
 // page div for main screens
 @import "../variables.scss";
+
+
+svg {
+    fill: $cPrimary;
+    stroke: $cPrimary;
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+}

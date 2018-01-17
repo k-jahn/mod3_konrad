@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 
 import { Link } from '../class/link';
 
-import { MainLocationService } from '../service/main-location.service';
 
 @Component({
   selector: 'app-main',
@@ -74,15 +73,12 @@ export class MainComponent implements OnInit, OnDestroy {
 
   constructor(
     private app: AppComponent,
-    private locationService: MainLocationService
   ) { }
 
   ngOnInit() {
-    this.selectedIndex = this.locationService.selectedIndex;
     this.app.title = 'NYSL';
   }
   ngOnDestroy() {
-    this.locationService.selectedIndex = this.selectedIndex;
   }
 
 }

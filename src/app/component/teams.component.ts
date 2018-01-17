@@ -7,7 +7,6 @@ import { Team } from '../class/team';
 
 // service
 import { TeamService } from '../service/team.service';
-import { MainLocationService } from '../service/main-location.service';
 
 
 @Component({
@@ -35,14 +34,11 @@ export class TeamsComponent implements OnInit, OnDestroy {
 
 
   constructor(
-    private locationService: MainLocationService,
     private teamService: TeamService,
     private router: Router,
   ) { }
 
   ngOnInit() {
-    // set scroll
-    this.scroll = this.locationService.scroll.home;
     // get Teams
     this.teamService.getTeams().subscribe(teams => {
       this.teams = teams.filter(team => team.id !== 0);
@@ -51,7 +47,5 @@ export class TeamsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // save scroll
-    this.locationService.scroll.teams = this.scroll = document.querySelector('.page').scrollTop;
   }
 }

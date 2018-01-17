@@ -27,10 +27,12 @@ import { TocSubnavComponent } from './component/toc-subnav.component';
 // services
 import { EventService } from './service/event.service';
 import { GameService } from './service/game.service';
-import { MainLocationService } from './service/main-location.service';
 import { TeamService } from './service/team.service';
 // modules
 import { AppRoutingModule } from './app-routing.module';
+import { GameBadgeComponent } from './component/game-badge.component';
+import { TeamBadgeComponent } from './component/team-badge.component';
+import { EmptyDetailComponent } from './component/empty-detail.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,9 @@ import { AppRoutingModule } from './app-routing.module';
     TeamsComponent,
     MenuComponent,
     TocSubnavComponent,
+    GameBadgeComponent,
+    TeamBadgeComponent,
+    EmptyDetailComponent,
   ],
   imports: [
     AngularFireAuthModule,
@@ -58,7 +63,6 @@ import { AppRoutingModule } from './app-routing.module';
     EventService,
     GameService,
     TeamService,
-    MainLocationService,
   ],
   bootstrap: [AppComponent]
 })

@@ -49,6 +49,9 @@ p,h4,dt,dd {
     font-size: 16px !important;
     z-index: 200;
     opacity: 1 !important;
+    width: calc(100vw / 3) !important;
+    min-width: 100px !important;
+    padding: 0 !important;
 }
 
 .mat-tab-group.mat-primary .mat-tab-label:focus {

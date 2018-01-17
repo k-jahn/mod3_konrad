@@ -6,6 +6,8 @@ built with angular and firebase
 
 ## TODO
 
-* fix bootstrap import (remove cdn)
 
+## Third Party
 
+Uses icons from
+https://www.onlinewebfonts.com/

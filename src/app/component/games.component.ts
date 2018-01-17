@@ -8,7 +8,6 @@ import { Team } from '../class/team';
 // service
 import { GameService } from '../service/game.service';
 import { TeamService } from '../service/team.service';
-import { MainLocationService } from '../service/main-location.service';
 
 @Component({
   selector: 'app-games',
@@ -19,10 +18,7 @@ export class GamesComponent implements OnInit, OnDestroy {
   myGames: Game[];
   games: Game[];
   teams: Team[];
-  scroll = 0;
 
-  test() {
-  }
 
   private findTeam(id: number): Team {
     return this.teams.filter(x => x.id === id)[0];
@@ -32,12 +28,9 @@ export class GamesComponent implements OnInit, OnDestroy {
     private gameService: GameService,
     private teamService: TeamService,
     private router: Router,
-    private locationService: MainLocationService
 ) { }
 
   ngOnInit() {
-    // set scroll
-    this.scroll = this.locationService.scroll.games;
     // get data
     this.gameService.getGames().subscribe(games => {
       this.games = games;
@@ -48,7 +41,5 @@ export class GamesComponent implements OnInit, OnDestroy {
     this.teamService.getTeams().subscribe(teams => this.teams = teams);
   }
   ngOnDestroy() {
-    // save scroll
-    this.locationService.scroll.games = this.scroll = document.querySelector('.page').scrollTop;
   }
 }

@@ -49,6 +49,10 @@ header {
     left: calc(0.2 * #{$headerheight});
     height: calc(0.8 * #{$headerheight});
     width: calc(0.6 * #{$headerheight});
+    display: none;
+}
+#back.active {
+    display: inline-block;
 }
 
 main {

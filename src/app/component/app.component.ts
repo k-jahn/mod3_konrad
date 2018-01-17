@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location, NgClass } from '@angular/common';
+import { MatSidenav } from '@angular/material/sidenav';
+
+
 
 @Component({
   selector: 'app-root',
@@ -10,6 +13,8 @@ import { Location, NgClass } from '@angular/common';
 export class AppComponent implements OnInit {
   public title = '';
   url = '';
+  @ViewChild('sidenav') public menu: MatSidenav;
+
 
   constructor(
     private router: Router,
@@ -17,6 +22,7 @@ export class AppComponent implements OnInit {
   ) {
     router.events.subscribe((val) => {
         this.url = location.path();
+        console.log(this.url);
     });
   }
 
@@ -28,5 +34,6 @@ export class AppComponent implements OnInit {
   }
   ngOnInit() {
   }
+
 
 }
