@@ -20,8 +20,8 @@ export class TeamService {
     return of(TEAMS);
   }
 
-  // getTeam(id: number): Observable<Team> {
-  //   return of(TEAMS.filter(team => team.id === id)[0]);
-  // }
+  getTeam(id: number): Observable<Team> {
+    return of(TEAMS.filter(team => team.id === id)[0]);
+  }
 
 }

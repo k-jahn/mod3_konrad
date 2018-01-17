@@ -1,3 +1,8 @@
-<p>
-  badge-game works!
-</p>
+<div class="gameBadge">
+  <div *ngIf="!game">
+    Loading...
+  </div>
+  <div *ngIf="game" (click)="router.navigate(['/game/', game.id.toString()])">
+    {{game.name}}
+  </div>
+</div>

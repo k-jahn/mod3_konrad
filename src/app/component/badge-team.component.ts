@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { TeamService } from '../service/team.service';
+import { Router } from '@angular/router';
+
+import { Team } from '../class/team';
 
 @Component({
   selector: 'app-badge-team',
@@ -6,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./badge-team.component.scss']
 })
 export class BadgeTeamComponent implements OnInit {
+  @Input() teamId: number;
+  team: Team;
 
-  constructor() { }
+  constructor(
+    private teamService: TeamService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+    this.teamService.getTeam(this.teamId).subscribe(team => this.team = team);
   }
 
 }

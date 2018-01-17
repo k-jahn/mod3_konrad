@@ -1,7 +1,10 @@
 <div class="detail">
-    <h3>
-        {{game.name}}
-    </h3>
+    <app-badge-team [teamId]="game.team1Id"></app-badge-team>
+    <div class="text-center">
+        <strong>vs.</strong>
+    </div>
+    <app-badge-team [teamId]="game.team1Id"></app-badge-team>
+    <h3>Details:</h3>
     <p>
         <strong>Date: </strong> {{game.date}}
         <strong>Time: </strong> {{game.time}}
@@ -12,30 +15,4 @@
     <p>
         <strong>Referee: </strong>{{game.referee}}
     </p>
-
-    <h3>
-        Teams
-    </h3>
-    <table class="table text-center">
-        <tr *ngFor="let team of [findTeam(game.team1Id)]" (click)="router.navigate(['/team/' + team.id.toString()])">
-            <td>
-                <strong>{{team.name}}</strong>
-                <br>
-                Coach: {{team.coach}}
-            </td>
-        </tr>
-        <tr class="noBackground">
-            <td>
-                <strong>vs.</strong>
-            </td>
-        </tr>
-        <tr *ngFor="let team of [findTeam(game.team2Id)]" (click)="router.navigate(['/team/' + team.id.toString()])">
-            <td>
-                <strong>{{team.name}}</strong>
-                <br>
-                Coach: {{team.coach}}
-            </td>
-        </tr>
-
-    </table>
 </div>

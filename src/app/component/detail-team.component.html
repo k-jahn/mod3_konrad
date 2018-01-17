@@ -20,24 +20,7 @@
     {{team.home}}
   </p>
   <h3>Upcoming Games</h3>
-  <table class="table">
-    <tbody>
-      <tr *ngFor="let game of games"  (click)="router.navigate(['/game/' + game.id.toString()])">
-        <td>
-          <div class="text-center">
-            <span class="homeTeam"><strong>{{findTeam(game.team1Id).name}}</strong></span> vs.
-            <strong>{{findTeam(game.team2Id).name}}</strong>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              {{game.date}}, {{game.time}}
-            </div>
-            <div class="col-6 text-right">
-              {{game.location}}
-            </div>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <ng-container *ngFor="let game of games">
+    <app-badge-game [gameId]="game.id"></app-badge-game>
+  </ng-container>
 </div>

@@ -30,22 +30,16 @@ export class DetailGameComponent implements OnInit {
     private app: AppComponent,
     private gameService: GameService,
     private teamService: TeamService
-  ) { }
-  public findTeam(id: number): Team {
-    return this.teams.filter(x => x.id === id)[0];
+  ) {
   }
 
   ngOnInit() {
     // get teamId from route
     this.gameId = +this.route.snapshot.paramMap.get('id');
-    // get team
-    this.teamService.getTeams().subscribe(teams => {
-      this.teams = teams;
-    });
-    // get upcoming games
+    // get game
     this.gameService.getGame(this.gameId).subscribe(game => {
       this.game = game;
-      this.app.setTitle.next(game.name);
+      this.app.setTitle.next(this.game.name);
     });
   }
 

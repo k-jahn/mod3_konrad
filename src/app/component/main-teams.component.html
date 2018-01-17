@@ -15,13 +15,8 @@
   </table>
   <h3>League</h3>
   <table class="table">
-    <tr *ngFor="let team of teams" (click)="router.navigate(['/team/' + team.id.toString()])">
-      <td>
-        <strong>{{team.name}}</strong>
-      </td>
-      <td>
-        coach: {{team.coach}}
-      </td>
-    </tr>
+    <ng-container *ngFor="let team of teams" >
+      <app-badge-team [teamId]="team.id"></app-badge-team>
+    </ng-container>
   </table>
 </div>
