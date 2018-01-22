@@ -1,9 +1,23 @@
-<div class="gameBadge">
-  <div *ngIf="!game">
+<div class="gameBadge" [ngClass]="{active: detailActive}" >
+  <ng-container *ngIf="!game">
     Loading...
-  </div>
+  </ng-container>
   <div *ngIf="game" (click)="router.navigate(['/game/', game.id.toString()])">
-    <strong>{{game.name}}</strong>
-
+    {{game.name}} - {{game.date}}, {{game.time}}
+    <div class="d-flex">
+      <div class="col-4">
+        <ng-container *ngIf="team1" >
+          <img src="assets/images/team_logos/{{team1.id}}.png">
+        </ng-container>
+      </div>
+      <div class="col-4 vs">
+        <strong>vs.</strong>
+      </div>
+      <div class="col-4">
+        <ng-container *ngIf="team2">
+          <img src="assets/images/team_logos/{{team2.id}}.png">
+        </ng-container>
+      </div>
+    </div>
   </div>
 </div>

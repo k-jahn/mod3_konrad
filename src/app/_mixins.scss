@@ -1,6 +1,8 @@
 // mixins
 
-@mixin ThreeDBar {
+@import './_variables.scss';
+
+@mixin threeDBar {
     box-shadow: inset 0 2px 2px rgba(255,255,255,0.4), 0px 2px 2px rgba(0,0,0,0.6);
 }
 @mixin badge {
@@ -12,6 +14,12 @@
     padding: 0.5em;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.6);
     font-size: 14px;
-    div {
+    img {
+        width: 70px;
+        height: 70px;
     }
+}
+@mixin teamIcon {
+    height: $teamIconHeight;
+    width: $teamIconWidth;
 }

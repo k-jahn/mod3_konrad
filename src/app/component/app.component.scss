@@ -6,7 +6,7 @@
 }
 
 .sidenavMenu {
-    width: $menuwidth;
+    width: $menuWidth;
 }
 
 header {
@@ -15,7 +15,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    height: $headerheight;
+    height: $headerHeight;
     z-index: 500;
     // style
     background-color: $cPrimary;
@@ -24,31 +24,31 @@ header {
     color:$tPrimary;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
     text-align: center;
-    line-height: $headerheight;
+    line-height: $headerHeight;
     font-size: 30px;
     font-weight:  bold;
 }
 #logo {
     display: inline-block;
     vertical-align: top;
-    height: calc(0.8 * #{$headerheight});
-    width: calc(0.8 * #{$headerheight});
-    transform: translateY( calc(0.1 * #{$headerheight})); 
+    height: calc(0.8 * #{$headerHeight});
+    width: calc(0.8 * #{$headerHeight});
+    transform: translateY( calc(0.1 * #{$headerHeight})); 
 
 }
 #menu {
     position: absolute;
-    top: calc(0.1 * #{$headerheight});
-    right: calc(0.2 * #{$headerheight});
-    height: calc(0.8 * #{$headerheight});
-    width: calc(0.6 * #{$headerheight});
+    top: calc(0.1 * #{$headerHeight});
+    right: calc(0.2 * #{$headerHeight});
+    height: calc(0.8 * #{$headerHeight});
+    width: calc(0.6 * #{$headerHeight});
 }
 #back {
     position: absolute;
-    top: calc(0.1 * #{$headerheight});
-    left: calc(0.2 * #{$headerheight});
-    height: calc(0.8 * #{$headerheight});
-    width: calc(0.6 * #{$headerheight});
+    top: calc(0.1 * #{$headerHeight});
+    left: calc(0.2 * #{$headerHeight});
+    height: calc(0.8 * #{$headerHeight});
+    width: calc(0.6 * #{$headerHeight});
     display: none;
 }
 #back.active {
@@ -57,7 +57,7 @@ header {
 
 main {
     position:  fixed;
-    top: $headerheight;
+    top: $headerHeight;
     left: 0;
     right: 0;
     bottom: 0;
@@ -67,9 +67,10 @@ main {
 .overlay {
     position: fixed;
     z-index: 400;
-    top: $headerheight;
+    top: $headerHeight;
     bottom: 0;
-    width: 100vw;
+    left: 0;
+    right: 0;
     background-color: $cBackground;
     display: none;
     overflow-x: hidden;
@@ -87,4 +88,16 @@ svg {
 
 .nav-link {
     padding: 0.5em 1.5em;
+}
+
+
+@media all and (orientation:landscape) { 
+    main {
+        right: calc(100vw - #{$portraitMainWidth});
+        box-shadow: 2px 0px 2px rgba(0,0,0,0.6);
+    }
+    .overlay {
+        left: $portraitMainWidth;
+        display: block;
+    }
 }

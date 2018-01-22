@@ -5,15 +5,15 @@
 
 
 .subnav {
-    @include ThreeDBar;
+    @include threeDBar;
     position: absolute;
-    top: $navheight;
+    top: $navHeight;
     background-color: $cContrast;
     color: $cPrimary;
     z-index: 20;
-    width: 100vw;
-    height: $subnavheight;
-    line-height: $subnavheight;
+    width: 100%;
+    height: $subnavHeight;
+    line-height: $subnavHeight;
     font-weight: bold;
 }
 

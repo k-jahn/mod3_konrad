@@ -1,15 +1,18 @@
+// library
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
-import { AppComponent } from './app.component';
-
+// services
 import { TeamService } from '../service/team.service';
 import { GameService } from '../service/game.service';
 
+
+// classes
 import { Team } from '../class/team';
 import { Game } from '../class/game';
+import { AppTitleService } from '../service/app-title.service';
 
 @Component({
   selector: 'app-detail-team',
@@ -28,12 +31,12 @@ export class DetailTeamComponent implements OnInit {
   }
 
   constructor(
-    private app: AppComponent,
     private route: ActivatedRoute,
     private router: Router,
     private location: Location,
     private teamService: TeamService,
-    private gameService: GameService
+    private gameService: GameService,
+    private titleService: AppTitleService,
   ) { }
 
 
@@ -44,7 +47,7 @@ export class DetailTeamComponent implements OnInit {
     this.teamService.getTeams().subscribe(teams => {
       this.teams = teams;
       this.team = this.findTeam(this.teamId);
-      Promise.resolve(null).then(() => this.app.setTitle.next(this.team.name));
+      Promise.resolve(null).then(() => this.titleService.setTitle.next(this.team.name));
     });
     // get upcoming games
     this.gameService.getTeamGames(this.teamId).subscribe(games => this.games = games);

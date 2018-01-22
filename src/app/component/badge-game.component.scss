@@ -5,5 +5,12 @@
 
 .gameBadge {
     @include badge;
-    text-align: left;
+    text-align: center;
+    .vs {
+        line-height: 70px;
+    }
+}
+
+.gameBadge.active {
+    background-color: $cPrimary;
 }

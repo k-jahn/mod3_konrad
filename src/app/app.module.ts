@@ -34,6 +34,7 @@ import { GameService } from './service/game.service';
 import { TeamService } from './service/team.service';
 // modules
 import { AppRoutingModule } from './app-routing.module';
+import { AppTitleService } from './service/app-title.service';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { AppRoutingModule } from './app-routing.module';
     EventService,
     GameService,
     TeamService,
+    AppTitleService,
   ],
   bootstrap: [AppComponent]
 })

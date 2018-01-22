@@ -1,5 +1,9 @@
+// library
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from './app.component';
+
+// services
+import { AppTitleService } from '../service/app-title.service';
 
 
 @Component({
@@ -10,11 +14,11 @@ import { AppComponent } from './app.component';
 export class DetailAboutComponent implements OnInit {
 
   constructor(
-    private app: AppComponent
+    private titleService: AppTitleService,
   ) {
   }
   ngOnInit() {
-    Promise.resolve(null).then(() => this.app.setTitle.next('About NYSL'));
+    Promise.resolve(() => this.titleService.setTitle.next('About NYSL'));
   }
 
 }

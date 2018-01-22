@@ -2,10 +2,10 @@
   <div *ngIf="!team">
     Loading...
   </div>
-  <div *ngIf="team" (click)="router.navigate(['/team/', team.id.toString()])">
+  <div *ngIf="team && team.id != 0" (click)="router.navigate(['/team/', team.id.toString()])">
     <ng-container *ngIf="!format">
       <div class="d-flex">
-        <div class="d-flex align-items-center col-4">
+        <div class="d-flex align-items-center">
           <img src="assets/images/team_logos/{{team.id}}.png">
         </div>
         <div class="col-8">
@@ -26,5 +26,8 @@
         </div>
       </div>
     </ng-container>
+  </div>
+  <div *ngIf="team.id == 0" >
+    TBD
   </div>
 </div>

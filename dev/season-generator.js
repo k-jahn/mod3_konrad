@@ -2,23 +2,19 @@
 
 
 // external code --------------------------------------------------------
-// array shuffle function, taken from stackoverflow
+// array shuffle function, taken from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
-
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-
         // Pick a remaining element...
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
-
         // And swap it with the current element.
         temporaryValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 // round robin generator, taken from npm package roundrobin
@@ -33,7 +29,6 @@ function roundrobin(n, ps) {  // n = num players
     } else {
         ps = ps.slice();
     }
-
     if (n % 2 === 1) {
         ps.push(DUMMY); // so we can match algorithm for even numbers
         n += 1;
@@ -51,45 +46,49 @@ function roundrobin(n, ps) {  // n = num players
 };
 
 // definitions ---------------------------------------------------------
-
 // variables
 let teamsNr;
 let gamesNr;
-let gamesPlayed = 5;
+let gamesPlayed = 8;
 let gamesPerSunday = 2;
 let p_goal = 0.6;
-
 // constants
 const schools = [
     {
         id: 'katz',
-        name: 'AJ Katzenmaier',
-        mapUrl: ''
+        name: 'AJ Katzenmaier Elementary',
+        mapUrl: 'https://goo.gl/maps/tEeT7VcSKko',
+        address: '24 W. Walton St., Chicago, IL 60610'
     },
     {
         id: 'green',
-        name: 'Greenbay',
-        mapUrl: ''
+        name: 'Greenbay Elementary',
+        mapUrl: 'https://goo.gl/maps/VMcgkbKbZEA2',
+        address: '1734 N. Orleans St., Chicago, IL 60614'
     },
     {
         id: 'yeag',
-        name: 'Howard A Yeager',
-        mapUrl: ''
+        name: 'Howard A Yeager Elementary',
+        mapUrl: 'https://goo.gl/maps/xYwxCV4p1kH2',
+        address: '2245 N. Southport Ave., Chicago, IL 60614'
     },
     {
         id: 'hart',
-        name: 'Marjorie P Hart',
-        mapUrl: ''
+        name: 'Marjorie P Hart Elementary',
+        mapUrl: 'https://goo.gl/maps/HKejnyBuxk22',
+        address: '2625 N. Orchard St., Chicago, IL 60614'
     },
     {
         id: 'north',
-        name: 'North',
-        mapUrl: ''
+        name: 'North Elementary',
+        mapUrl: 'https://goo.gl/maps/ftaYeiBdcr52',
+        address: '1409 N. Ogden Ave., Chicago, IL 60610'
     },
     {
         id: 'south',
-        name: 'South',
-        mapUrl: ''
+        name: 'South Elementary',
+        mapUrl: 'https://goo.gl/maps/NzTt3SxuoPy',
+        address: '24 W. Walton St., Chicago, IL 60610'
     },
 ];
 const referees = [
@@ -114,7 +113,7 @@ const referees = [
     'Nicholle Nickelson',
     'Tad Tejera'
 ]
-const coaches = shuffle([
+const coaches = [
     'Henry Howser',
     'Gregg Grooms',
     'Kerstin Knarr',
@@ -135,7 +134,7 @@ const coaches = shuffle([
     'Lai Lawyer',
     'Jayson Jilek',
     'Wanita Woodham'
-])
+]
 
 // functions
 function fillSelect(id, from, to) {
@@ -152,7 +151,7 @@ function teamsChange() {
     gamesNr = teamsNr * (teamsNr - 1) / 2
     $('#games').html(gamesNr)
     fillSelect('#gamesPlayed', 0, gamesNr);
-    $('#gamesPlayed').val('6');
+    $('#gamesPlayed').val('8');
 }
 function generate() {
     // seed teams
@@ -162,7 +161,7 @@ function generate() {
     for (let i=0; i<gamesNr+3; i++) {
         games.push({
             id: i+1,
-            date: new Date(2018,8,2+7*Math.floor(i / gamesPerSunday), [11 , 20, 16 ][i % gamesPerSunday],0,0,0),
+            date: new Date(2018,8,2+7*Math.floor(i / gamesPerSunday), [11 , 20, 16, 13 ][i % gamesPerSunday],0,0,0),
             name: 'Game ' + (i+1),
             team1Id: i<gamesNr? seed[i][0] : 0,
             team2Id: i < gamesNr ? seed[i][1] : 0,
@@ -173,24 +172,26 @@ function generate() {
             team2goals: 0,
         });
         if (i>=gamesNr) {
-            games[i].name = ['Semi A', 'Semi B', 'Final'][i-gamesNr];
+            games[i].name = ['Semifinal A', 'Semifinal B', 'Final'][i-gamesNr];
             games[i].date = new Date(2018, 8, 2 + 7 * (Math.floor(gamesNr / gamesPerSunday) + i - gamesNr), 20, 0, 0, 0);
         }
     }
     // generate teams
     let teams = [];
+    let shuffledCoaches = shuffle(coaches)
     for (let i = 0; i < (+teamsNr + 1); i++) {
         teams.push({
             id: i,
-            name: i?'U'+(i+1):'TBD',
+            name: i?'U'+i:'TBD',
             home: i?schools[i % schools.length].id:'',
-            coach: i?coaches[i]:'',
-            goals: 0,
-            goals_taken: 0,
+            coach: i?shuffledCoaches[i]:'',
+            rank: 0,
+            mp: 0,
             win: 0,
             loss: 0,
             tie: 0,
-            mp: 0,
+            goals: 0,
+            goals_taken: 0,
         });
     }
     // simulate season
@@ -210,7 +211,7 @@ function generate() {
             if (g1>g2) {
                 teams[team].win++;
                 teams[team].mp += 3;
-            } else if (g1=g2) {
+            } else if (g1==g2) {
                 teams[team].tie++;
                 teams[team].mp += 1;
             } else {
@@ -218,6 +219,19 @@ function generate() {
             }
         }
     }
+    // rank teams
+    let tbd = teams.shift()
+    teams = teams
+        .sort((a,b) => a.goals_taken-b.goals_taken)
+        .sort((a,b) => b.goals-a.goals)
+        .sort((a,b) => b.mp-a.mp);
+    teams.forEach((x,i,a) => {
+        if (i==0) x.rank = 1;
+        else if (x.mp == a[i - 1].mp && x.goals == a[i - 1].goals && x.goals_taken == a[i - 1].goals_taken) x.rank = a[i-1].rank;
+        else x.rank = i+1;
+    })
+    teams = teams.sort((a,b) => a.id - b.id)
+    teams.push(tbd)
     // show stuff
     $('#gamesOut').val(JSON.stringify(games, null, 2))
     $('#teamsOut').val(JSON.stringify(teams, null, 2))
@@ -229,11 +243,12 @@ $(function () {
     // set bind event listeners
     $('#teams').on('change',() => teamsChange());
     $('#gamesPlayed').on('change', () => gamesPlayed = $('#gamesPlayed').val());
-    $('#gamesPerSunday').on('change', () => gamesPerSunday = $('#gamesPerSunday').val());
+    $('#gamesPerSunday').on('change', () => gamesPerSunday = +$('#gamesPerSunday').val());
     $('#pGoal').on('change', () => p_goal = +$('#pGoal').val());
     $('#generate').on('click',() => generate())
     // fill #teams select
     fillSelect('#teams', 5, 15);
     // set initial values
+    $('#teams').val('7')
     teamsChange();
 });
