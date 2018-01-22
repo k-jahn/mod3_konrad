@@ -53,44 +53,38 @@ let gamesPlayed = 8;
 let gamesPerSunday = 2;
 let p_goal = 0.6;
 // constants
-const schools = [
-    {
-        id: 'katz',
+const schools = {
+    katz: {
         name: 'AJ Katzenmaier Elementary',
         mapUrl: 'https://goo.gl/maps/tEeT7VcSKko',
         address: '24 W. Walton St., Chicago, IL 60610'
     },
-    {
-        id: 'green',
+    green: {
         name: 'Greenbay Elementary',
         mapUrl: 'https://goo.gl/maps/VMcgkbKbZEA2',
         address: '1734 N. Orleans St., Chicago, IL 60614'
     },
-    {
-        id: 'yeag',
+    yeag: {
         name: 'Howard A Yeager Elementary',
         mapUrl: 'https://goo.gl/maps/xYwxCV4p1kH2',
         address: '2245 N. Southport Ave., Chicago, IL 60614'
     },
-    {
-        id: 'hart',
+    hart: {
         name: 'Marjorie P Hart Elementary',
         mapUrl: 'https://goo.gl/maps/HKejnyBuxk22',
         address: '2625 N. Orchard St., Chicago, IL 60614'
     },
-    {
-        id: 'north',
+    north: {
         name: 'North Elementary',
         mapUrl: 'https://goo.gl/maps/ftaYeiBdcr52',
         address: '1409 N. Ogden Ave., Chicago, IL 60610'
     },
-    {
-        id: 'south',
+    south: {
         name: 'South Elementary',
         mapUrl: 'https://goo.gl/maps/NzTt3SxuoPy',
         address: '24 W. Walton St., Chicago, IL 60610'
     },
-];
+};
 const referees = [
     'Francene Finnen',
     'Chung Cousineau',
@@ -156,26 +150,6 @@ function teamsChange() {
 function generate() {
     // seed teams
     let seed = roundrobin(+teamsNr).reduce((x,y) => x.concat(y),[]);
-    // generate games-
-    let games = [];
-    for (let i=0; i<gamesNr+3; i++) {
-        games.push({
-            id: i+1,
-            date: new Date(2018,8,2+7*Math.floor(i / gamesPerSunday), [11 , 20, 16, 13 ][i % gamesPerSunday],0,0,0),
-            name: 'Game ' + (i+1),
-            team1Id: i<gamesNr? seed[i][0] : 0,
-            team2Id: i < gamesNr ? seed[i][1] : 0,
-            location: schools[i%schools.length].id,
-            referee: referees[Math.floor(Math.random() * referees.length)],
-            played: false,
-            team1goals: 0,
-            team2goals: 0,
-        });
-        if (i>=gamesNr) {
-            games[i].name = ['Semifinal A', 'Semifinal B', 'Final'][i-gamesNr];
-            games[i].date = new Date(2018, 8, 2 + 7 * (Math.floor(gamesNr / gamesPerSunday) + i - gamesNr), 20, 0, 0, 0);
-        }
-    }
     // generate teams
     let teams = [];
     let shuffledCoaches = shuffle(coaches)
@@ -183,7 +157,7 @@ function generate() {
         teams.push({
             id: i,
             name: i?'U'+i:'TBD',
-            home: i?schools[i % schools.length].id:'',
+            home: i ? Object.keys(schools)[i % Object.keys(schools).length] :'',
             coach: i?shuffledCoaches[i]:'',
             rank: 0,
             mp: 0,
@@ -193,6 +167,26 @@ function generate() {
             goals: 0,
             goals_taken: 0,
         });
+    }
+    // generate games-
+    let games = [];
+    for (let i=0; i<gamesNr+3; i++) {
+        games.push({
+            id: i+1,
+            date: new Date(2018,8,2+7*Math.floor(i / gamesPerSunday), [11 , 20, 16, 13 ][i % gamesPerSunday],0,0,0),
+            name: 'Game ' + (i+1),
+            team1Id: i<gamesNr? seed[i][0] : 0,
+            team2Id: i < gamesNr ? seed[i][1] : 0,
+            location: i < gamesNr ? teams.filter(x => x.id == seed[i][0])[0].home:'',
+            referee: referees[Math.floor(Math.random() * referees.length)],
+            played: false,
+            team1goals: 0,
+            team2goals: 0,
+        });
+        if (i>=gamesNr) {
+            games[i].name = ['Semifinal A', 'Semifinal B', 'Final'][i-gamesNr];
+            games[i].date = new Date(2018, 8, 2 + 7 * (Math.floor(gamesNr / gamesPerSunday) + i - gamesNr), 20, 0, 0, 0);
+        }
     }
     // simulate season
     for (let i=0; i<gamesPlayed; i++) {

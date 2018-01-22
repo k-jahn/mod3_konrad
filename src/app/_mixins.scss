@@ -18,6 +18,9 @@
         width: 70px;
         height: 70px;
     }
+    &.active {
+        background-color: rgba($cPrimary,0.6);
+    }
 }
 @mixin teamIcon {
     height: $teamIconHeight;

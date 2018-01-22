@@ -23,12 +23,7 @@ export class DetailTeamComponent implements OnInit {
   teamId: number;
   team: Team;
   games: Game[];
-  teams: Team[];
 
-
-  private findTeam(id: number): Team {
-    return this.teams.filter(x => x.id === id)[0];
-  }
 
   constructor(
     private route: ActivatedRoute,
@@ -42,14 +37,13 @@ export class DetailTeamComponent implements OnInit {
 
   ngOnInit() {
     // get teamId from route
-    this.teamId = +this.route.snapshot.paramMap.get('id');
-    // get team
-    this.teamService.getTeams().subscribe(teams => {
-      this.teams = teams;
-      this.team = this.findTeam(this.teamId);
-      Promise.resolve(null).then(() => this.titleService.setTitle.next(this.team.name));
+    this.route.paramMap.subscribe(paraMap => {
+      this.teamId = +paraMap.get('id');
+      this.teamService.getTeam(this.teamId).subscribe(team => {
+        this.team = team;
+        Promise.resolve(null).then(() => this.titleService.setTitle.next(this.team.name));
+        this.gameService.getTeamGames(this.teamId).subscribe(games => this.games = games);
+      });
     });
-    // get upcoming games
-    this.gameService.getTeamGames(this.teamId).subscribe(games => this.games = games);
   }
 }

@@ -30,18 +30,6 @@ export class BadgeGameComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
-    // this.gameService.getGame(this.gameId).subscribe(game => {
-    //   this.game = game;
-    //   this.teamService.getTeam(this.game.team1Id).subscribe(team => this.team1 = team);
-    //   this.teamService.getTeam(this.game.team2Id).subscribe(team => this.team2 = team);
-    // });
-    // this.router.events.subscribe((val) => {
-    //   if (this.location.path() === '/game/' + this.gameId) {
-    //     this.detailActive = true;
-    //   } else {
-    //     this.detailActive = false;
-    //   }
-    // });
   }
   ngOnChanges() {
     this.gameService.getGame(this.gameId).subscribe(game => {
