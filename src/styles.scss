@@ -44,7 +44,7 @@ p,h4,dt,dd {
 // overwrite material styles ===========================================================================
 // todo: replace with mixin
 .mat-ink-bar {
-    background-color: $cContrast2 !important;
+    background-color: $cContrast !important;
     height: calc(#{$navHeight}) !important; 
 }
 .mat-tab-label {

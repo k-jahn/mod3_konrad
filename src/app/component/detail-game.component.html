@@ -6,11 +6,14 @@
     <app-badge-team [teamId]="game.team2Id"></app-badge-team>
     <h3>Details:</h3>
     <p>
-        <strong>Date: </strong> {{game.date}}
+        <strong>Date: </strong> {{month[game.month].long}} {{game.day}}
         <strong>Time: </strong> {{game.time}}
     </p>
     <p>
-        <strong>Location: </strong>{{game.location}}
+        <strong>Location: </strong>
+        <a href="{{school[game.location].mapUrl}}">
+             {{school[game.location].name}}
+        </a>
     </p>
     <p>
         <strong>Referee: </strong>{{game.referee}}

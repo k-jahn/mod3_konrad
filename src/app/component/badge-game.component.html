@@ -3,20 +3,26 @@
     Loading...
   </ng-container>
   <div *ngIf="game" (click)="router.navigate(['/game/', game.id.toString()])">
-    {{game.name}} - {{game.date}}, {{game.time}}
     <div class="d-flex">
-      <div class="col-4">
-        <ng-container *ngIf="team1" >
-          <img src="assets/images/team_logos/{{team1.id}}.png">
-        </ng-container>
+      <div class="col-4 label">
+        {{month[game.month].short}} {{game.day}} 
+        <br>
+        {{game.time}}
       </div>
-      <div class="col-4 vs">
-        <strong>vs.</strong>
-      </div>
-      <div class="col-4">
-        <ng-container *ngIf="team2">
-          <img src="assets/images/team_logos/{{team2.id}}.png">
-        </ng-container>
+      <div class="col-8 d-flex">
+        <div class="col-5">
+          <ng-container *ngIf="team1" >
+            <img src="assets/images/team_logos/{{team1.id}}.png">
+          </ng-container>
+        </div>
+        <div class="col-2 vs">
+          <strong>vs.</strong>
+        </div>
+        <div class="col-5">
+          <ng-container *ngIf="team2">
+            <img src="assets/images/team_logos/{{team2.id}}.png">
+          </ng-container>
+        </div>
       </div>
     </div>
   </div>

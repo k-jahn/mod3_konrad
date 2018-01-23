@@ -8,6 +8,8 @@ import { TeamService } from '../service/team.service';
 import { Game } from '../class/game';
 import { Team  } from '../class/team';
 
+import { MONTH } from '../const/month';
+import { SCHOOL } from '../const/school';
 
 @Component({
   selector: 'app-badge-game',
@@ -21,6 +23,8 @@ export class BadgeGameComponent implements OnInit, OnChanges {
   team1: Team;
   team2: Team;
   detailActive = false;
+
+  month = MONTH;
 
   constructor(
     private gameService: GameService,

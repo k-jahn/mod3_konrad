@@ -35,10 +35,13 @@ import { TeamService } from './service/team.service';
 // modules
 import { AppRoutingModule } from './app-routing.module';
 import { AppTitleService } from './service/app-title.service';
+import { DetailSeasonComponent } from './component/detail-season.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    BadgeTeamComponent,
+    BadgeGameComponent,
     DetailAboutComponent,
     DetailEmptyComponent,
     DetailGameComponent,
@@ -49,8 +52,7 @@ import { AppTitleService } from './service/app-title.service';
     MainTeamsComponent,
     MenuComponent,
     MainSubnavComponent,
-    BadgeTeamComponent,
-    BadgeGameComponent,
+    DetailSeasonComponent,
   ],
   imports: [
     AngularFireAuthModule,

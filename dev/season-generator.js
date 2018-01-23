@@ -156,26 +156,30 @@ function generate() {
     for (let i = 0; i < (+teamsNr + 1); i++) {
         teams.push({
             id: i,
-            name: i?'U'+i:'TBD',
+            name: i ? 'U' + i : 'TBD',
             home: i ? Object.keys(schools)[i % Object.keys(schools).length] :'',
-            coach: i?shuffledCoaches[i]:'',
+            coach: i ? shuffledCoaches[i] : '',
             rank: 0,
             mp: 0,
             win: 0,
             loss: 0,
             tie: 0,
-            goals: 0,
-            goals_taken: 0,
+            goal_scored: 0,
+            goal_taken: 0,
         });
     }
     // generate games-
     let games = [];
     for (let i=0; i<gamesNr+3; i++) {
+        let date = new Date(2018, 8, 2 + 7 * Math.floor(i / gamesPerSunday), [9, 13, 11, 16][i % gamesPerSunday], 0, 0, 0);
+        if (i >= gamesNr) date = new Date(2018, 8, 2 + 7 * (Math.floor(gamesNr / gamesPerSunday) + i - gamesNr), 20, 0, 0, 0);
         games.push({
             id: i+1,
-            date: new Date(2018,8,2+7*Math.floor(i / gamesPerSunday), [11 , 20, 16, 13 ][i % gamesPerSunday],0,0,0),
-            name: 'Game ' + (i+1),
-            team1Id: i<gamesNr? seed[i][0] : 0,
+            month: date.getMonth() + 1,
+            day: date.getDate(),
+            time: date.getHours() < 13 ? date.getHours() + ' AM' : date.getHours()-12 + ' PM',
+            name: i < gamesNr ? 'Game ' + (i + 1) : ['Semifinal A', 'Semifinal B', 'Final'][i - gamesNr],
+            team1Id: i < gamesNr ? seed[i][0] : 0,
             team2Id: i < gamesNr ? seed[i][1] : 0,
             location: i < gamesNr ? teams.filter(x => x.id == seed[i][0])[0].home:'',
             referee: referees[Math.floor(Math.random() * referees.length)],
@@ -183,10 +187,6 @@ function generate() {
             team1goals: 0,
             team2goals: 0,
         });
-        if (i>=gamesNr) {
-            games[i].name = ['Semifinal A', 'Semifinal B', 'Final'][i-gamesNr];
-            games[i].date = new Date(2018, 8, 2 + 7 * (Math.floor(gamesNr / gamesPerSunday) + i - gamesNr), 20, 0, 0, 0);
-        }
     }
     // simulate season
     for (let i=0; i<gamesPlayed; i++) {
@@ -200,8 +200,8 @@ function generate() {
         games[i].team2goals += g2;
         // update teams
         for (team of [games[i].team1Id, games[i].team2Id]){
-            teams[team].goals += g1
-            teams[team].goals_taken += g2
+            teams[team].goal_scored += g1
+            teams[team].goal_taken += g2
             if (g1>g2) {
                 teams[team].win++;
                 teams[team].mp += 3;
@@ -216,20 +216,20 @@ function generate() {
     // rank teams
     let tbd = teams.shift()
     teams = teams
-        .sort((a,b) => a.goals_taken-b.goals_taken)
-        .sort((a,b) => b.goals-a.goals)
+        .sort((a,b) => a.goal_taken-b.goal_taken)
+        .sort((a,b) => b.goal_scored-a.goal_scored)
         .sort((a,b) => b.mp-a.mp);
     teams.forEach((x,i,a) => {
         if (i==0) x.rank = 1;
-        else if (x.mp == a[i - 1].mp && x.goals == a[i - 1].goals && x.goals_taken == a[i - 1].goals_taken) x.rank = a[i-1].rank;
+        else if (x.mp == a[i - 1].mp && x.goal_scored == a[i - 1].goal_scored && x.goal_taken == a[i - 1].goal_taken) x.rank = a[i-1].rank;
         else x.rank = i+1;
     })
     teams = teams.sort((a,b) => a.id - b.id)
     teams.push(tbd)
     // show stuff
-    $('#gamesOut').val(JSON.stringify(games, null, 2))
-    $('#teamsOut').val(JSON.stringify(teams, null, 2))
-    $('#schoolsOut').val(JSON.stringify(schools, null, 2))
+    $('#gamesOut').val(JSON.stringify(games, null, 2));
+    $('#teamsOut').val(JSON.stringify(teams, null, 2));
+    $('#schoolsOut').val(JSON.stringify(schools, null, 2));
 }
 
 // on dom load, do stuff! -------------------------------------------------

@@ -13,11 +13,15 @@ import { TEAMS } from '../dev/data';
 
 @Injectable()
 export class TeamService {
+  teams = of(TEAMS);
 
   constructor() { }
 
   getTeams(): Observable<Team[]> {
-    return of(TEAMS);
+    return this.teams;
+  }
+  getRankedTeams(): Observable<Team[]> {
+    return this.teams;
   }
 
   getTeam(id: number): Observable<Team> {

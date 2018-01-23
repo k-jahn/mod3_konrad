@@ -14,9 +14,10 @@ $cPrimary: #033949;
 $tPrimary: #eeeedd;
 $cSecondary: #719399;
 $cContrast: #93c364;
-$cContrast2: rgba($cContrast,0.6);
+$cContrast2: lighten($cContrast, 32%);
 $cWarn: #93c364;
 
+$cDetailBackground: $cContrast2;
 
 $cBackground: #ffffff;
 $cMenuBackground: #111111;

@@ -33,13 +33,12 @@ export class MainGamesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // get data
-    this.gameService.getGames().subscribe(games => {
+    this.gameService.getUnplayedGames().subscribe(games => {
       this.games = games;
     });
     this.gameService.getTeamGames(1).subscribe(games => {
       this.myGames = games;
     });
-    this.teamService.getTeams().subscribe(teams => this.teams = teams);
   }
   ngOnDestroy() {
   }

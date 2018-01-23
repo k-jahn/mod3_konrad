@@ -18,7 +18,7 @@ export class DetailAboutComponent implements OnInit {
   ) {
   }
   ngOnInit() {
-    Promise.resolve(() => this.titleService.setTitle.next('About NYSL'));
+    Promise.resolve(null).then(() => this.titleService.setTitle.next('About NYSL'));
   }
 
 }

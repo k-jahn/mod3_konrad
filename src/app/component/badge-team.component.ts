@@ -1,10 +1,16 @@
+// library
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
+// service
 import { TeamService } from '../service/team.service';
 
+// class
 import { Team } from '../class/team';
+
+// const
+import { SCHOOL } from '../const/school';
 
 @Component({
   selector: 'app-badge-team',
@@ -16,6 +22,8 @@ export class BadgeTeamComponent implements OnInit, OnChanges {
   @Input() format: object;
   team: Team;
   detailActive = false;
+
+  school = SCHOOL;
 
   constructor(
     private teamService: TeamService,

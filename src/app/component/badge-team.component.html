@@ -5,23 +5,16 @@
   <div *ngIf="team && team.id != 0" (click)="router.navigate(['/team/', team.id.toString()])">
     <ng-container *ngIf="!format">
       <div class="d-flex">
-        <div class="d-flex align-items-center">
-          <img src="assets/images/team_logos/{{team.id}}.png">
+        <div class="col-4 label">
+          <!-- <img src="assets/images/team_logos/{{team.id}}.png"> -->
+          {{team.name}}
         </div>
-        <div class="col-8">
-          <div class="d-flex score">
-            <div class="col-4">
-              <strong>W: </strong> {{team.win}} 
-            </div>
-            <div class="col-4">
-              <strong>L: </strong> {{team.loss}} 
-            </div>
-            <div class="col-4">
-              <strong>T: </strong> {{team.loss}}
-            </div>
-          </div>
+        <div class="col-6">
           <p>
             <strong>Coach: </strong>{{team.coach}}
+          </p>
+          <p>
+            <strong>Home: </strong>{{school[team.home].name}} 
           </p>
         </div>
       </div>

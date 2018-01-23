@@ -13,7 +13,9 @@ import { AppTitleService } from '../service/app-title.service';
 import { Game } from '../class/game';
 import { Team } from '../class/team';
 
-
+// constants
+import { SCHOOL } from '../const/school';
+import { MONTH } from '../const/month';
 
 @Component({
   selector: 'app-detail-game',
@@ -23,6 +25,9 @@ import { Team } from '../class/team';
 export class DetailGameComponent implements OnInit {
   gameId: number;
   game: Game;
+  // expose constants
+  school = SCHOOL;
+  month = MONTH;
 
   constructor(
     private router: Router,

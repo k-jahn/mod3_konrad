@@ -2,11 +2,13 @@
 export class Team {
     id: number;
     name: string;
+    coach: string;
+    home: string;
     rank: number;
+    mp: number;
     win: number;
     loss: number;
-    coach: string;
-    goals_scored: number;
-    goals_taken: number;
-    home: string;
+    tie: number;
+    goal_scored: number;
+    goal_taken: number;
 }
