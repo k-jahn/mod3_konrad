@@ -17,7 +17,9 @@
   </p>
   <p>
     <strong>Home Field: </strong>
-    {{team.home}}
+    <a href="{{school[team.home].mapUrl}}">
+      {{school[team.home].name}}
+    </a>
   </p>
   <h3>Upcoming Games</h3>
   <ng-container *ngFor="let game of games">

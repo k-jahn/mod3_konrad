@@ -2,6 +2,7 @@
 @import "../_variables.scss";
 
 .menu {
+    position: relative;
     height: 100vh;
     width: $menuWidth;
     background-color: $cMenuBackground;
@@ -9,5 +10,23 @@
     svg {
         fill: $cMenuText;
         stroke: $cMenuText;
+    }
+}
+
+.menuItem {
+    border-top: 2px solid $cMenuText;
+    padding: 12px;
+    width: $menuWidth;
+    &:last-child {
+        border-bottom: 2px solid $cMenuText;
+    }
+}
+
+.log {
+    position: absolute;
+    bottom: 0;
+    .activeUser {
+        padding: 0 12px;
+        text-align: right;
     }
 }

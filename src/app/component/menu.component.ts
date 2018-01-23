@@ -2,16 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from './app.component';
 
+import * as firebase from 'firebase/app';
+
+import { AuthService } from '../service/auth.service';
+
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  user: firebase.User;
 
   constructor(
-    private router: Router,
     private app: AppComponent,
+    private authService: AuthService,
+    private router: Router,
   ) { }
 
   goTo(path: string[]): void {
@@ -19,7 +26,15 @@ export class MenuComponent implements OnInit {
     this.app.menu.toggle();
   }
 
+  login(): void {
+    this.authService.login();
+  }
+  logout(): void {
+    this.authService.logout();
+  }
+
   ngOnInit() {
+    this.authService.user.subscribe(user => this.user = user);
   }
 
 }

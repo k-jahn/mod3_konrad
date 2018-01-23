@@ -14,6 +14,10 @@ import { Team } from '../class/team';
 import { Game } from '../class/game';
 import { AppTitleService } from '../service/app-title.service';
 
+
+// constants
+import { SCHOOL } from '../const/school';
+
 @Component({
   selector: 'app-detail-team',
   templateUrl: './detail-team.component.html',
@@ -23,7 +27,7 @@ export class DetailTeamComponent implements OnInit {
   teamId: number;
   team: Team;
   games: Game[];
-
+  school = SCHOOL;
 
   constructor(
     private route: ActivatedRoute,

@@ -18,14 +18,25 @@ export class TeamService {
   constructor() { }
 
   getTeams(): Observable<Team[]> {
-    return this.teams;
+    return this.teams
+      .pipe(
+        map(teams => teams.filter(team => team.id !== 0))
+      );
   }
+
   getRankedTeams(): Observable<Team[]> {
-    return this.teams;
+    return this.teams
+      .pipe(
+        map(teams => teams
+          .filter(team => team.id !== 0)
+          .sort((a, b) => a.rank - b.rank)
+        )
+      );
   }
-
   getTeam(id: number): Observable<Team> {
-    return of(TEAMS.filter(team => team.id === id)[0]);
+    return this.teams
+      .pipe(
+        map(teams => teams.filter(team => team.id === id)[0])
+      );
   }
-
 }

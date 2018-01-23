@@ -13,6 +13,7 @@ import { AppTitleService } from '../service/app-title.service';
 export class AppComponent {
   private title = '';
   url = '';
+  sideBySide = false;
 
   // expose sidnav to binding
   @ViewChild('sidenav') public menu: MatSidenav;
@@ -24,7 +25,13 @@ export class AppComponent {
     private titleService: AppTitleService,
   ) {
     router.events.subscribe((val) => {
+        const reg = /(game)|(team)/;
         this.url = location.path();
+        if (reg.test(this.url)) {
+          this.sideBySide = true;
+        } else {
+          this.sideBySide = false;
+        }
     });
     this.titleService.setTitle.subscribe(x => this.title = x);
   }

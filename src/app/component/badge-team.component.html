@@ -6,10 +6,9 @@
     <ng-container *ngIf="!format">
       <div class="d-flex">
         <div class="col-4 label">
-          <!-- <img src="assets/images/team_logos/{{team.id}}.png"> -->
-          {{team.name}}
+          <img src="assets/images/team_logos/{{team.id}}.png">
         </div>
-        <div class="col-6">
+        <div class="col-8">
           <p>
             <strong>Coach: </strong>{{team.coach}}
           </p>
@@ -19,8 +18,25 @@
         </div>
       </div>
     </ng-container>
+    <ng-container *ngIf="format==='rank'">
+      <div class="d-flex">
+        <div class="col-4 label">
+          <strong>{{team.rank}}.</strong>
+          {{team.name}}
+        </div>
+        <div class="col-8">
+          <strong>Points: </strong> {{team.mp}}
+          <br>
+          <strong>W: </strong> {{team.win}}
+          <strong>L: </strong> {{team.loss}}
+          <strong>T: </strong> {{team.tie}}
+        </div>
+      </div>
+    </ng-container>
   </div>
-  <div *ngIf="team.id == 0" >
-    TBD
+  <div *ngIf="team && team.id == 0" >
+    <div class="text-center">
+        <img src="assets/images/team_logos/{{team.id}}.png">
+    </div>
   </div>
 </div>

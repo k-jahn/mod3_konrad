@@ -36,6 +36,8 @@ import { TeamService } from './service/team.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppTitleService } from './service/app-title.service';
 import { DetailSeasonComponent } from './component/detail-season.component';
+import { FavoriteService } from './service/favorite.service';
+import { AuthService } from './service/auth.service';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,8 @@ import { DetailSeasonComponent } from './component/detail-season.component';
     GameService,
     TeamService,
     AppTitleService,
+    FavoriteService,
+    AuthService,
   ],
   bootstrap: [AppComponent]
 })

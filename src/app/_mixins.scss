@@ -9,6 +9,7 @@
     display: block;
     justify-content: center;
     width: 85%;
+    max-width: 400px;
     text-align: center;
     margin: 1em auto;
     padding: 0;
@@ -18,12 +19,12 @@
     box-sizing: content-box;
     background-color: $cBackground;
     img {
-        height: $teamIconHeight;
-        width: $teamIconWidth;
+        height: 60px;
+        width: auto;
         margin: 0.5rem;
     }
     &.active {
-        border: 2px solid $cContrast;
+        border: 3px solid $cContrast;
     }
     .label {
         background-color: $cPrimary;

@@ -21,7 +21,7 @@
       </svg>
       </span>
     </header>
-    <main>
+    <main [ngClass]="{sideBySide: sideBySide}">
       <app-main></app-main>
       <!-- detail view overlay -->
       <div class="overlay" [ngClass]="{active: url}">

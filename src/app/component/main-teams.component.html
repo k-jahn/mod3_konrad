@@ -1,21 +1,10 @@
 <div class="page">
   <h3>Standings</h3>
-  <table>
-    <tr *ngFor="let team of teamsByRank">
-      <td>
-        {{team.rank}}.
-      
-    
-        <strong>{{team.name}}</strong>
-        win: {{team.win}}
-        loss: {{team.loss}}
-      </td>
-    </tr>
-  </table>
+  <ng-container *ngFor="let team of teamsRanked">
+    <app-badge-team [teamId]="team.id" [format]="'rank'"></app-badge-team>
+  </ng-container>
   <h3>League</h3>
-  <table class="table">
-    <ng-container *ngFor="let team of teams" >
-      <app-badge-team [teamId]="team.id"></app-badge-team>
-    </ng-container>
-  </table>
+  <ng-container *ngFor="let team of teams" >
+    <app-badge-team [teamId]="team.id"></app-badge-team>
+  </ng-container>
 </div>

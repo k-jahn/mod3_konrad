@@ -3,6 +3,13 @@
     "public": {
       ".read": true,
       ".write": false
+    },
+    "comment": {
+      ".read": true,
+      "$commentid": {
+        ".write": "auth.uid == newData.child('uid').val()",
+        ".validate": "newData.hasChildren(['author', 'text']) && newData.child('author').val().length > 0 && newData.child('text').val().length > 0"
+      }
     }
   }
 }
