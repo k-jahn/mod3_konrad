@@ -7,6 +7,8 @@
 
 .sidenavMenu {
     width: $menuWidth;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 header {
@@ -76,15 +78,16 @@ main {
     display: none;
     overflow-x: hidden;
     overflow-y: scroll;
+    padding: 1em 0;
+    &.active {
+        display: block;
+    }
 }
-.overlay.active {
-    display: block;
-}
-
-
 
 svg {
     fill: $tPrimary;
+    size: auto;
+    transform: none;
 }
 
 .nav-link {

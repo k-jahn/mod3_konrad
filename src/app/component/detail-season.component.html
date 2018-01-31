@@ -1,3 +1,5 @@
-<p>
-  detail-season works!
-</p>
+
+<h3>Concluded Games</h3>
+<ng-container *ngFor="let game of games">
+  <app-badge-game [gameId]="game.id"></app-badge-game>
+</ng-container>

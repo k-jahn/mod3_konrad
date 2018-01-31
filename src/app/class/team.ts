@@ -11,4 +11,9 @@ export class Team {
     tie: number;
     goal_scored: number;
     goal_taken: number;
+    constructor(data: object) {
+        for (const key in data) {
+            this[key] = data[key];
+        }
+    }
 }

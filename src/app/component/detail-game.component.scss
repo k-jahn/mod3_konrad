@@ -2,6 +2,12 @@
 @import "../_variables.scss";
 
 
-.homeTeam {
-    color: $cWarn;
+.vs {
+    margin: 0 0.5em;
+}
+
+.noComments {
+    color: #666;
+    fill: #666;
+    stroke: #666;
 }

@@ -2,7 +2,7 @@
   "rules": {
     "public": {
       ".read": true,
-      ".write": false
+      ".write": "auth.uid == 'ctcNMhNM1gQnKaMbLFw03DENDBN2'"
     },
     "comment": {
       ".read": true,

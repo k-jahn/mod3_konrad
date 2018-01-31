@@ -1,6 +1,7 @@
 // season-generator.js ===============================================================
 
 
+
 // external code --------------------------------------------------------
 // array shuffle function, taken from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffle(array) {
@@ -216,9 +217,9 @@ function generate() {
     // rank teams
     let tbd = teams.shift()
     teams = teams
-        .sort((a,b) => a.goal_taken-b.goal_taken)
-        .sort((a,b) => b.goal_scored-a.goal_scored)
-        .sort((a,b) => b.mp-a.mp);
+    .sort((a,b) => a.goal_taken-b.goal_taken)
+    .sort((a,b) => b.goal_scored-a.goal_scored)
+    .sort((a,b) => b.mp-a.mp);
     teams.forEach((x,i,a) => {
         if (i==0) x.rank = 1;
         else if (x.mp == a[i - 1].mp && x.goal_scored == a[i - 1].goal_scored && x.goal_taken == a[i - 1].goal_taken) x.rank = a[i-1].rank;
@@ -232,6 +233,18 @@ function generate() {
     $('#schoolsOut').val(JSON.stringify(schools, null, 2));
 }
 
+// firebase DB --------------------------------------------------------------
+
+// firebase login
+function login() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase
+    .auth()
+    .signInWithPopup(provider);
+    
+}
+
+
 // on dom load, do stuff! -------------------------------------------------
 $(function () {
     // set bind event listeners
@@ -240,6 +253,10 @@ $(function () {
     $('#gamesPerSunday').on('change', () => gamesPerSunday = +$('#gamesPerSunday').val());
     $('#pGoal').on('change', () => p_goal = +$('#pGoal').val());
     $('#generate').on('click',() => generate())
+    $('#upload').on('click', _=> {
+        if (firebase.auth().currentuser) upload();
+        else login();
+    });
     // fill #teams select
     fillSelect('#teams', 5, 15);
     // set initial values

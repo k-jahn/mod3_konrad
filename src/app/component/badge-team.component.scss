@@ -9,9 +9,23 @@
         margin: 0em 0;
         padding: 0;
     }
+    &.small {
+        width: 35%;
+        display: inline-block;
+    }
 }
 
 
 .score div {
     padding: 0;
+}
+
+.rank {
+    .label {
+        background-color: $cContrast;
+        color: $cPrimary;
+    }
+    .d-flex > div {
+        padding: 1em 0;
+    }
 }

@@ -7,6 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBs4zn_3jllPCKDQ2nvf6XQ24aPdfgF_Vc",
+            authDomain: "nysl-konrad-fec05.firebaseapp.com",
+            databaseURL: "https://nysl-konrad-fec05.firebaseio.com",
+            projectId: "nysl-konrad-fec05",
+            storageBucket: "nysl-konrad-fec05.appspot.com",
+            messagingSenderId: "242959941205"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <!-- my js -->
     <script src="season-generator.js"></script>
     <style>
         .row {
@@ -68,7 +83,9 @@
     
     <p>
         <button id="generate">Generate JSONs</button>
+        <button id="upload">Sign in to Firebase</button>
     </p>
+
     
     <div class="row">
         <div class="flex1">

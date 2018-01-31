@@ -1,8 +1,10 @@
-<div class="teamBadge" [ngClass]="{active: detailActive}">
+<div class="teamBadge" [ngClass]="{active: detailActive, small: format === 'small', rank: format ==='rank'}">
+  <!-- if team not loaded -->
   <div *ngIf="!team">
     Loading...
   </div>
   <div *ngIf="team && team.id != 0" (click)="router.navigate(['/team/', team.id.toString()])">
+    <!-- standard format -->
     <ng-container *ngIf="!format">
       <div class="d-flex">
         <div class="col-4 label">
@@ -18,6 +20,7 @@
         </div>
       </div>
     </ng-container>
+    <!-- rank format -->
     <ng-container *ngIf="format==='rank'">
       <div class="d-flex">
         <div class="col-4 label">
@@ -25,18 +28,26 @@
           {{team.name}}
         </div>
         <div class="col-8">
-          <strong>Points: </strong> {{team.mp}}
-          <br>
+          <strong>MP: </strong> {{team.mp}}
           <strong>W: </strong> {{team.win}}
           <strong>L: </strong> {{team.loss}}
           <strong>T: </strong> {{team.tie}}
+          <br>
+          <strong>Scored: </strong> {{team.goal_scored}}
+          <strong>Taken: </strong> {{team.goal_taken}}
         </div>
+      </div>
+    </ng-container>
+    <!-- small format -->
+    <ng-container *ngIf="format==='small'">
+      <div class="label">
+        <img src="assets/images/team_logos/{{team.id}}.png">
       </div>
     </ng-container>
   </div>
   <div *ngIf="team && team.id == 0" >
     <div class="text-center">
-        <img src="assets/images/team_logos/{{team.id}}.png">
+      <img src="assets/images/team_logos/{{team.id}}.png">
     </div>
   </div>
 </div>

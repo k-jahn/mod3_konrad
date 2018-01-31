@@ -19,7 +19,7 @@ import { SCHOOL } from '../const/school';
 })
 export class BadgeTeamComponent implements OnInit, OnChanges {
   @Input() teamId: number;
-  @Input() format: object;
+  @Input() format: string;
   team: Team;
   detailActive = false;
 

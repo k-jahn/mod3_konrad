@@ -7,7 +7,6 @@ import { Team } from '../class/team';
 
 // service
 import { GameService } from '../service/game.service';
-import { TeamService } from '../service/team.service';
 
 @Component({
   selector: 'app-main-games',
@@ -27,7 +26,6 @@ export class MainGamesComponent implements OnInit, OnDestroy {
 
   constructor(
     private gameService: GameService,
-    private teamService: TeamService,
     private router: Router,
 ) { }
 

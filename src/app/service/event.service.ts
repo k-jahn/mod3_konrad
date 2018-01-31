@@ -1,22 +1,28 @@
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 // rxjs
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { map } from 'rxjs/operators';
 
 // class
 import { Event } from '../class/event';
 
-// dev data
-import { EVENTS } from '../dev/data';
+
 
 @Injectable()
 export class EventService {
-
-  constructor() { }
+  private events: Observable<Event[]>;
+  constructor(
+    private db: AngularFireDatabase
+  ) {
+    this.events = this.db.list('public/events').valueChanges().pipe(
+      map(result => result.map(item => new Event(item)))
+    );
+  }
 
   getEvents(): Observable<Event[]> {
-    return of(EVENTS);
+    return this.events;
   }
 
 }

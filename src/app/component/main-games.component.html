@@ -6,9 +6,7 @@
             </ng-container>
     </ng-container>
     <h3 header-link="upcoming">Upcoming</h3>
-    <table class="table">
-        <ng-container *ngFor="let game of games">
-            <app-badge-game [gameId]="game.id"></app-badge-game>
-        </ng-container>
-    </table>
+    <ng-container *ngFor="let game of games">
+        <app-badge-game [gameId]="game.id"></app-badge-game>
+    </ng-container>
 </div>

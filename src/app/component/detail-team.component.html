@@ -1,16 +1,4 @@
 <div *ngIf="team">
-  <h3>Stats</h3>
-  <p>
-    <strong>Rank: </strong>
-    {{team.rank}}
-  </p>
-  <p>
-    <strong>Wins: </strong>
-    {{team.win}}
-    <strong> Losses: </strong>
-    {{team.loss}}
-  </p>
-  <h3>Information</h3>
   <p>
     <strong>Coach: </strong>
     {{team.coach}}
@@ -21,6 +9,18 @@
       {{school[team.home].name}}
     </a>
   </p>
+  <hr>
+  <p>
+    <strong>Rank: </strong>
+    {{team.rank}}
+  </p>
+  <p>
+    <strong>Wins: </strong>
+    {{team.win}}
+    <strong> Losses: </strong>
+    {{team.loss}}
+  </p>
+  <hr>
   <h3>Upcoming Games</h3>
   <ng-container *ngFor="let game of games">
     <app-badge-game [gameId]="game.id"></app-badge-game>

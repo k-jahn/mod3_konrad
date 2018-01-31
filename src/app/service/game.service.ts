@@ -1,23 +1,31 @@
 import { Injectable } from '@angular/core';
 
+// angular
+import { AngularFireDatabase } from 'angularfire2/database';
+
 // rxjs
 import { Observable } from 'rxjs/Observable';
+
 import { of } from 'rxjs/observable/of';
 import { map } from 'rxjs/operators';
 
 // class
 import { Game } from '../class/game';
 
-// dev data
-import { GAMES } from '../dev/data';
 
 @Injectable()
 export class GameService {
-  // placeholder, replace with call to server
-  games = of(GAMES);
+  games: Observable<Game[]>;
 
 
-  constructor() { }
+  constructor(
+    private db: AngularFireDatabase
+  ) {
+    this.games = db.list('public/games').valueChanges().pipe(
+      // cast to game(fix?)
+      map(result => result.map(entry => new Game(entry)))
+    );
+  }
 
   public getPlayedGames(): Observable<Game[]> {
     return this.games
@@ -39,7 +47,7 @@ export class GameService {
     return this.games
       .pipe(
         map(
-          games => games.filter(game => game.team1Id === teamId || game.team2Id === teamId)
+          games => games.filter(game => game.team1Id === teamId || game.team2Id === teamId).filter(game => !game.played)
         )
       );
   }

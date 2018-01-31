@@ -19,7 +19,9 @@ export class MainNewsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(  ) {
-    this.eventService.getEvents().subscribe(events => this.events = events);
+    this.eventService.getEvents().subscribe(events => {
+      this.events = events;
+    });
   }
 
   ngOnDestroy(  ) {

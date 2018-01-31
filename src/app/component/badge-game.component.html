@@ -5,9 +5,11 @@
   <div *ngIf="game" (click)="router.navigate(['/game/', game.id.toString()])">
     <div class="d-flex">
       <div class="col-4 label">
-        {{month[game.month].short}} {{game.day}} 
+          {{month[game.month].short}} {{game.day}} 
         <br>
-        {{game.time}}
+        <small>
+          {{game.time}}
+        </small>
       </div>
       <div class="col-8 d-flex">
         <div class="col-5">

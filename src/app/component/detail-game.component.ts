@@ -2,8 +2,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import * as firebase from 'firebase/app';
+
 
 // services
+import { AuthService } from '../service/auth.service';
 import { GameService } from '../service/game.service';
 import { TeamService } from '../service/team.service';
 import { AppTitleService } from '../service/app-title.service';
@@ -25,16 +28,18 @@ import { MONTH } from '../const/month';
 export class DetailGameComponent implements OnInit {
   gameId: number;
   game: Game;
+  user: firebase.User;
   // expose constants
   school = SCHOOL;
   month = MONTH;
 
   constructor(
+    private authService: AuthService,
+    private gameService: GameService,
+    private location: Location,
+    private titleService: AppTitleService,
     private router: Router,
     private route: ActivatedRoute,
-    private location: Location,
-    private gameService: GameService,
-    private titleService: AppTitleService,
   ) {
   }
 
@@ -47,6 +52,8 @@ export class DetailGameComponent implements OnInit {
         Promise.resolve(null).then(() => this.titleService.setTitle.next(this.game.name));
       });
     });
+    // subscribe to user
+    this.authService.user.subscribe(user => this.user = user);
   }
 
 
