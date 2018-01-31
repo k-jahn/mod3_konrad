@@ -31,6 +31,15 @@
     <p>
         <strong>Referee: </strong>{{game.referee}}
     </p>
+    <ng-container *ngIf="game.played">
+    <hr>
+        <p>
+        <strong>
+            Outcome: 
+        </strong>
+            {{game.team1goals}} : {{game.team2goals}}
+        </p>
+    </ng-container>
     <hr>
     <ng-container *ngIf="!game.played" >
         <!-- comments disabled if not logged in -->

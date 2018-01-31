@@ -5,11 +5,20 @@
   <div *ngIf="game" (click)="router.navigate(['/game/', game.id.toString()])">
     <div class="d-flex">
       <div class="col-4 label">
-          {{month[game.month].short}} {{game.day}} 
-        <br>
-        <small>
-          {{game.time}}
-        </small>
+        <div>
+          <ng-container *ngIf="!game.played">
+            {{month[game.month].short}} {{game.day}} 
+            <br>
+            <small>
+              {{game.time}}
+            </small>
+          </ng-container>
+          <ng-container *ngIf="game.played" >
+            {{game.name}}
+            <br>
+            {{game.team1goals}} : {{game.team2goals}}
+          </ng-container>
+        </div>                
       </div>
       <div class="col-8 d-flex">
         <div class="col-5">

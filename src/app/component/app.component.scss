@@ -29,33 +29,32 @@ header {
     line-height: $headerHeight;
     font-size: 30px;
     font-weight:  bold;
+    .logo {
+        display: inline-block;
+        vertical-align: top;
+        height: 0.7 * $headerHeight;
+        width: 0.7 * $headerHeight;
+        transform: translateY( 0.15 * $headerHeight); 
+    }
+    svg {
+        position: absolute;
+        top: 0.1 * $headerHeight;
+        height: 0.8 * $headerHeight;
+        width: 0.6 * $headerHeight;
+        &.hamburger {
+            right: 0.2 * $headerHeight;
+        }
+        &#back {
+            left: 0.2 * $headerHeight;
+            display: none;
+            &.active {
+                display: inline-block;
+            }
+        }
+    }
 }
-#logo {
-    display: inline-block;
-    vertical-align: top;
-    height: calc(0.8 * #{$headerHeight});
-    width: calc(0.8 * #{$headerHeight});
-    transform: translateY( calc(0.1 * #{$headerHeight})); 
 
-}
-#menu {
-    position: absolute;
-    top: calc(0.1 * #{$headerHeight});
-    right: calc(0.2 * #{$headerHeight});
-    height: calc(0.8 * #{$headerHeight});
-    width: calc(0.6 * #{$headerHeight});
-}
-#back {
-    position: absolute;
-    top: calc(0.1 * #{$headerHeight});
-    left: calc(0.2 * #{$headerHeight});
-    height: calc(0.8 * #{$headerHeight});
-    width: calc(0.6 * #{$headerHeight});
-    display: none;
-}
-#back.active {
-    display: inline-block;
-}
+
 
 main {
     position:  fixed;

@@ -36,6 +36,6 @@ export class DetailSeasonComponent implements OnInit {
     this.gameService.getPlayedGames().subscribe(games => {
       this.games = games;
     });
-    this.titleService.setTitle.next('Archive: Season');
+    Promise.resolve(null).then(() => this.titleService.setTitle.next('Archive: Season'));
   }
 }

@@ -38,7 +38,7 @@ import { AppTitleService } from './service/app-title.service';
 import { DetailSeasonComponent } from './component/detail-season.component';
 import { FavoriteService } from './service/favorite.service';
 import { AuthService } from './service/auth.service';
-import { SchoolService } from './service/school.service';
+import { CommentService } from './service/comment.service';
 
 @NgModule({
   declarations: [
@@ -74,7 +74,7 @@ import { SchoolService } from './service/school.service';
     AppTitleService,
     FavoriteService,
     AuthService,
-    SchoolService,
+    CommentService,
   ],
   bootstrap: [AppComponent]
 })

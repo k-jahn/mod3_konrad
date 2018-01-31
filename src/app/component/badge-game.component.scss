@@ -8,4 +8,15 @@
     .vs {
         line-height: 70px;
     }
+    height: 76px;
+    div.label {
+        position: relative;
+        div {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+        }
+    }
 }
