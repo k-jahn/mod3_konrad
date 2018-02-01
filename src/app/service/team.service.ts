@@ -1,31 +1,27 @@
+// team data service =====================================================
 import { Injectable } from '@angular/core';
 
 // rxjs
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { of } from 'rxjs/observable/of'; // dev, remove when no longe needed
-import { map, tap } from 'rxjs/operators';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { map } from 'rxjs/operators';
 
 // class
 import { Team } from '../class/team';
 
-// dev data
+// service
+import { DatabaseService } from './database.service';
 
 @Injectable()
 export class TeamService {
   teams = new BehaviorSubject<Team[]>([]);
 
   constructor(
-    private db: AngularFireDatabase
+    private databaseService: DatabaseService
   ) {
-    db.list('public/teams')
-      .valueChanges()
-      .pipe(
-        map(
-          result => result.map(entry => new Team(entry))
-        )
-    ).subscribe(arr => this.teams.next(arr));
+    this.databaseService.get('public/teams').subscribe(teamData => {
+      this.teams.next(teamData.map(team => new Team(team)));
+    });
   }
 
   getTeams(): Observable<Team[]> {

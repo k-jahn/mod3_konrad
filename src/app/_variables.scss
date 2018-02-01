@@ -1,7 +1,7 @@
 // component sizes
 $headerHeight: 48px;
 $navHeight: 48px;
-$subnavHeight: 36px;
+$subnavHeight: 48px;
 $menuWidth: 200px;
 $portraitMainWidth: 50vw;
 $teamIconHeight: 70px;
@@ -14,8 +14,10 @@ $cPrimary: #033949;
 $tPrimary: #eeeedd;
 $cSecondary: #719399;
 $cContrast: #93c364;
-$cContrast2: lighten($cContrast, 32%);
+$cContrastLight: lighten($cContrast, 32%);
+$cContrastDark: darken($cContrast, 10%);
 $cWarn: #93c364;
+$cBoxShadow: rgba(0,0,0,0.6);
 
 
 $cBackground: #ffffff;

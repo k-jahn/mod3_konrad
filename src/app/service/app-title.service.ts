@@ -1,3 +1,4 @@
+// service controlling site titlebar ===========================================================
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 

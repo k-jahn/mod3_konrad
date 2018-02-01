@@ -5,12 +5,12 @@
 
 
 .subnav {
-    @include threeDBar;
+    box-shadow: 0 2px 2px $cBoxShadow;
     position: absolute;
     top: $navHeight;
     background-color: $cContrast;
     color: $cPrimary;
-    z-index: 20;
+    z-index: 15;
     width: 100%;
     height: $subnavHeight;
     line-height: $subnavHeight;

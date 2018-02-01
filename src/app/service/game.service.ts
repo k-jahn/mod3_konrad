@@ -1,31 +1,29 @@
-import { Injectable } from '@angular/core';
+// service for game data ===================================================
 
-// angular
-import { AngularFireDatabase } from 'angularfire2/database';
+import { Injectable } from '@angular/core';
 
 // rxjs
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
-import { of } from 'rxjs/observable/of';
 import { map } from 'rxjs/operators';
 
 // class
 import { Game } from '../class/game';
+
+// service
+import { DatabaseService } from './database.service';
 
 
 @Injectable()
 export class GameService {
   games = new BehaviorSubject<Game[]>([]);
 
-
   constructor(
-    private db: AngularFireDatabase
+    private databaseService: DatabaseService
   ) {
-    db.list('public/games').valueChanges().pipe(
-      // cast to game(fix?)
-      map(result => result.map(entry => new Game(entry)))
-    ).subscribe(arr => this.games.next(arr));
+    this.databaseService.get('public/games').subscribe(gamedata => {
+      this.games.next(gamedata.map(entry => new Game(entry)));
+    });
   }
 
   public getPlayedGames(): Observable<Game[]> {

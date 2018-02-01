@@ -1,0 +1,34 @@
+// import vars&mixins
+@import "../_variables.scss";
+@import "../_mixins.scss";
+
+
+.banner {
+    height: 150px;
+    margin: 0em;
+    background-size: cover;
+    &.banner1 {
+        background-image: url("../../assets/images/soccer_game_1.jpg");
+    }
+    &.banner2 {
+        background-image: url("../../assets/images/soccer_game_2.jpg");
+    }
+}
+
+@media all and (orientation: landscape) {
+    .landscapeRow {
+        display: flex;
+        flex-direction: row-reverse;
+        & > div {
+            flex: 1;
+        }
+    }
+    .banner {
+        @include standardBoxShadow();
+        height: 300px;
+        transform: scale(.9);
+    }
+    .banner2 {
+        order: 2;
+    }
+}

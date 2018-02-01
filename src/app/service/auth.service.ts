@@ -1,3 +1,4 @@
+// service for user authentification with firebase ================================================
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';

@@ -39,6 +39,7 @@ import { DetailSeasonComponent } from './component/detail-season.component';
 import { FavoriteService } from './service/favorite.service';
 import { AuthService } from './service/auth.service';
 import { CommentService } from './service/comment.service';
+import { DatabaseService } from './service/database.service';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { CommentService } from './service/comment.service';
     FavoriteService,
     AuthService,
     CommentService,
+    DatabaseService,
   ],
   bootstrap: [AppComponent]
 })
