@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 // rxjs
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { of } from 'rxjs/observable/of'; // dev, remove when no longe needed
 import { map, tap } from 'rxjs/operators';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -13,18 +14,18 @@ import { Team } from '../class/team';
 
 @Injectable()
 export class TeamService {
-  teams: Observable<Team[]>;
+  teams = new BehaviorSubject<Team[]>([]);
 
   constructor(
     private db: AngularFireDatabase
   ) {
-    this.teams = db.list('public/teams')
+    db.list('public/teams')
       .valueChanges()
       .pipe(
         map(
           result => result.map(entry => new Team(entry))
         )
-      );
+    ).subscribe(arr => this.teams.next(arr));
   }
 
   getTeams(): Observable<Team[]> {

@@ -5,6 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 // rxjs
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { of } from 'rxjs/observable/of';
 import { map } from 'rxjs/operators';
@@ -15,16 +16,16 @@ import { Game } from '../class/game';
 
 @Injectable()
 export class GameService {
-  games: Observable<Game[]>;
+  games = new BehaviorSubject<Game[]>([]);
 
 
   constructor(
     private db: AngularFireDatabase
   ) {
-    this.games = db.list('public/games').valueChanges().pipe(
+    db.list('public/games').valueChanges().pipe(
       // cast to game(fix?)
       map(result => result.map(entry => new Game(entry)))
-    );
+    ).subscribe(arr => this.games.next(arr));
   }
 
   public getPlayedGames(): Observable<Game[]> {
