@@ -12,6 +12,11 @@ export class DatabaseService {
     private db: AngularFireDatabase
   ) {  }
 
+  public update(key: string, data: object): void {
+    this.db.object(key).update(data);
+  }
+
+  // gets information from db, manages localStore caching
   public get(key: string): BehaviorSubject<any[]> {
     const behaviorSubject = new BehaviorSubject<any[]>(JSON.parse(localStorage.getItem(key)) || []);
     this.db.list(key).valueChanges().subscribe(response => {

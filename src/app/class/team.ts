@@ -12,7 +12,7 @@ export class Team {
     goal_scored: number;
     goal_taken: number;
     constructor(data: object) {
-        for (const key in data) {
+        for (const key of Object.getOwnPropertyNames(data)) {
             this[key] = data[key];
         }
     }

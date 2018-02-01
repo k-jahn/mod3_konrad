@@ -13,7 +13,7 @@ export class Game {
     team1goals: number;
     team2goals: number;
     constructor(data: object) {
-        for (const key in data) {
+        for (const key of Object.getOwnPropertyNames(data)) {
             this[key] = data[key];
         }
     }

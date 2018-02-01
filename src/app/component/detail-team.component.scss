@@ -1,8 +1,13 @@
 // import vars
 @import "../_variables.scss";
 
-
-.homeTeam {
-    color: $cWarn;
+.topRow {
+    display: flex;
+    align-items: center;
+    box-sizing: content-box;
+    margin: 0 1em;
 }
 
+.teamLogo {
+    max-width: 120px;
+}

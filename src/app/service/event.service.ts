@@ -1,6 +1,5 @@
 // service for event data
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
 
 // rxjs
 import { Observable } from 'rxjs/Observable';
@@ -8,18 +7,20 @@ import { map } from 'rxjs/operators';
 
 // class
 import { Event } from '../class/event';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
+import { DatabaseService } from './database.service';
 
 
 @Injectable()
 export class EventService {
-  private events: Observable<Event[]>;
+  private events = new BehaviorSubject<Event[]>([]);
   constructor(
-    private db: AngularFireDatabase
+    private databaseService: DatabaseService
   ) {
-    this.events = this.db.list('public/events').valueChanges().pipe(
-      map(result => result.map(item => new Event(item)))
-    );
+    this.databaseService.get('public/events').subscribe(events => {
+      this.events.next(events.map(e => new Event(e)));
+    });
   }
 
   getEvents(): Observable<Event[]> {

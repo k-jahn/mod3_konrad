@@ -1,18 +1,19 @@
 // library
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
-
+import { ActivatedRoute } from '@angular/router';
+import * as firebase from 'firebase/app';
 
 // services
 import { TeamService } from '../service/team.service';
 import { GameService } from '../service/game.service';
+import { AppTitleService } from '../service/app-title.service';
+import { FavoriteService } from '../service/favorite.service';
+import { AuthService } from '../service/auth.service';
 
 
 // classes
 import { Team } from '../class/team';
 import { Game } from '../class/game';
-import { AppTitleService } from '../service/app-title.service';
 
 
 // constants
@@ -28,14 +29,21 @@ export class DetailTeamComponent implements OnInit {
   team: Team;
   games: Game[];
   school = SCHOOL;
+  user: firebase.User;
+  favorite: boolean;
+
+
+  favoriteToggle(): void {
+    this.favoriteService.toggleFavorite(this.teamId);
+  }
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private location: Location,
-    private teamService: TeamService,
+    private authService: AuthService,
     private gameService: GameService,
+    private route: ActivatedRoute,
+    private teamService: TeamService,
     private titleService: AppTitleService,
+    private favoriteService: FavoriteService,
   ) { }
 
 
@@ -49,5 +57,7 @@ export class DetailTeamComponent implements OnInit {
         this.gameService.getTeamGames(this.teamId).subscribe(games => this.games = games);
       });
     });
+    this.authService.user.subscribe(user => this.user);
+    this.favoriteService.getFavorite(this.teamId).subscribe(fav => this.favorite = fav);
   }
 }

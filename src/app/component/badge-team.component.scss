@@ -10,22 +10,28 @@
         padding: 0;
     }
     &.small {
-        width: 35%;
+        width: 100px;
         display: inline-block;
     }
+    .label {
+        @include round;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
 }
 
 
-.score div {
-    padding: 0;
-}
 
 .rank {
-    .label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    margin: 0 auto 12px auto;
+    .teamBadge {
         background-color: $cContrast;
-        color: $cPrimary;
-    }
-    .d-flex > div {
-        padding: 1em 0;
+        padding: 0;
+        margin: 0;
+        width: 100px;
     }
 }

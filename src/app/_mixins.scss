@@ -5,21 +5,24 @@
 @mixin threeDBar {
     box-shadow: inset 0 2px 2px rgba(255,255,255,0.4), 0px 2px 2px $cBoxShadow;
 }
-@mixin badge {
+@mixin round {
+    border-radius: 3px;
     overflow: hidden;
+}
+@mixin badge {
     position: relative;
     display: block;
     justify-content: center;
     width: 85%;
     max-width: 400px;
     text-align: center;
-    margin: 1em auto;
+    margin: 12px auto;
     padding: 0;
     @include standardBoxShadow();
     font-size: 14px;
     box-sizing: content-box;
     background-color: $cBackground;
-    border-radius: 3px;
+    @include round;
     img {
         height: 60px;
         width: auto;

@@ -1,9 +1,13 @@
 // import vars
 @import "../_variables.scss";
 
-
-.vs {
-    margin: 0 0.5em;
+.overview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .vs {
+        margin: 0 2em;
+    }
 }
 
 .noComments {

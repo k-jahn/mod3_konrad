@@ -56,5 +56,4 @@ export class DetailGameComponent implements OnInit {
     this.authService.user.subscribe(user => this.user = user);
   }
 
-
 }

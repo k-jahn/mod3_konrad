@@ -1,9 +1,16 @@
 <div class="page">
-    <ng-container>
-        <h3 header-link="mygames">My Games</h3>
-            <ng-container *ngFor="let game of myGames">
-                <app-badge-game [gameId]="game.id"></app-badge-game>
+    <!-- favorite teams -->
+    <ng-container *ngFor="let team of teams">
+         <!-- check if in favorites -->
+        <ng-container *ngIf="favorites[team.id] || false" >
+            <h3 header-link="mygames">{{team.name}}</h3>
+            <ng-container *ngFor="let game of games">
+                 <!-- check if team is playing -->
+                <ng-container *ngIf="game.team1Id == team.id || game.team2Id == team.id">  
+                    <app-badge-game [gameId]="game.id"></app-badge-game>
+                </ng-container>
             </ng-container>
+        </ng-container>
     </ng-container>
     <h3 header-link="upcoming">Upcoming</h3>
     <ng-container *ngFor="let game of games">

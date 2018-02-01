@@ -7,6 +7,7 @@ import { Team } from '../class/team';
 
 // service
 import { GameService } from '../service/game.service';
+import { FavoriteService } from '../service/favorite.service';
 
 @Component({
   selector: 'app-main-games',
@@ -15,16 +16,16 @@ import { GameService } from '../service/game.service';
 })
 
 export class MainGamesComponent implements OnInit, OnDestroy {
-  myGames: Game[];
   games: Game[];
   teams: Team[];
-
+  favorites = {};
 
   private findTeam(id: number): Team {
     return this.teams.filter(x => x.id === id)[0];
   }
 
   constructor(
+    private favoriteService: FavoriteService,
     private gameService: GameService,
     private router: Router,
 ) { }
@@ -34,9 +35,7 @@ export class MainGamesComponent implements OnInit, OnDestroy {
     this.gameService.getUnplayedGames().subscribe(games => {
       this.games = games;
     });
-    this.gameService.getTeamGames(1).subscribe(games => {
-      this.myGames = games;
-    });
+    this.favoriteService.getFavorites().subscribe(fav => this.favorites = fav);
   }
   ngOnDestroy() {
   }

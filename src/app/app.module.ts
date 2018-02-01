@@ -40,6 +40,7 @@ import { FavoriteService } from './service/favorite.service';
 import { AuthService } from './service/auth.service';
 import { CommentService } from './service/comment.service';
 import { DatabaseService } from './service/database.service';
+import { MainSubnavLinksService } from './service/main-subnav-links.service';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { DatabaseService } from './service/database.service';
     AuthService,
     CommentService,
     DatabaseService,
+    MainSubnavLinksService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,22 @@
 <div *ngIf="team">
+  <div class="topRow">
+    <div class="teamLogo">
+      <img src="assets/images/team_logos/{{team.id}}.png">
+    </div>
+    <div>
+      <ng-container *ngIf="user && favorite != undefined">
+        <button (click)="followToggle()" class="btn">
+          <ng-container *ngIf="!favorite" >
+            follow
+          </ng-container>
+          <ng-container *ngIf="favorite" >
+            unfollow
+          </ng-container>
+        </button>
+      </ng-container>
+    </div>
+  </div>
+    <hr>
   <p>
     <strong>Coach: </strong>
     {{team.coach}}
@@ -21,7 +39,7 @@
     {{team.loss}}
   </p>
   <p>
-    <strong>Goals scored: </strong>
+    <strong>Goals: scored: </strong>
     {{team.goal_scored}} /
     <strong> taken: </strong>
     {{team.goal_taken}}

@@ -1,9 +1,17 @@
 
 <div class="detail" *ngIf="game">
-    <div class="text-center">
-        <app-badge-team [teamId]="game.team1Id" format="small"></app-badge-team>
-        <span class="vs">vs.</span> 
-        <app-badge-team [teamId]="game.team2Id" format="small"></app-badge-team>
+    <div class="overview">
+        <div>
+            <app-badge-team [teamId]="game.team1Id" format="small"></app-badge-team>
+        </div>
+        <div class="vs">
+            <strong>
+                vs.
+            </strong>
+        </div> 
+        <div>
+            <app-badge-team [teamId]="game.team2Id" format="small"></app-badge-team>
+        </div>
     </div>
     <hr>
     <p>
@@ -41,23 +49,23 @@
         </p>
     </ng-container>
     <hr>
-    <ng-container *ngIf="!game.played" >
         <!-- comments disabled if not logged in -->
-        <div class="noComments" *ngIf="!user">
-            <p>
-                log in to view comments.
+    <div class="noComments" *ngIf="!user">
+        <p>
+            <em>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M15 1H6c-.55 0-1 .45-1 1v2H1c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h1v3l3-3h4c.55 0 1-.45 1-1V9h1l3 3V9h1c.55 0 1-.45 1-1V2c0-.55-.45-1-1-1zM9 11H4.5L3 12.5V11H1V5h4v3c0 .55.45 1 1 1h3v2zm6-3h-2v1.5L11.5 8H6V2h9v6z"
                     />
                 </svg>
-            </p>
-        </div>
-        <!-- show comments if logged in -->
-        <div class="comments" *ngIf="user">
-            <p>
-                here be comments. arrrrrrrrrrrrrrrrrrrr.
-            </p>
-        </div>
-    </ng-container>
+                You must be signed in to view comments.
+            </em>
+        </p>
+    </div>
+    <!-- show comments if logged in -->
+    <div class="comments" *ngIf="user">
+        <p>
+            here be comments. arrrrrrrrrrrrrrrrrrrr.
+        </p>
+    </div>
 </div>
 
