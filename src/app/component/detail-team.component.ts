@@ -30,12 +30,9 @@ export class DetailTeamComponent implements OnInit {
   games: Game[];
   school = SCHOOL;
   user: firebase.User;
-  favorite: boolean;
+  favorite: boolean = null;
 
 
-  favoriteToggle(): void {
-    this.favoriteService.toggleFavorite(this.teamId);
-  }
 
   constructor(
     private authService: AuthService,
@@ -57,7 +54,7 @@ export class DetailTeamComponent implements OnInit {
         this.gameService.getTeamGames(this.teamId).subscribe(games => this.games = games);
       });
     });
-    this.authService.user.subscribe(user => this.user);
-    this.favoriteService.getFavorite(this.teamId).subscribe(fav => this.favorite = fav);
+    this.authService.user.subscribe(user => this.user = user);
+    this.favoriteService.getFavorites().subscribe(fav => this.favorite = fav[this.teamId.toString()] || false);
   }
 }

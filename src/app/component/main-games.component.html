@@ -2,8 +2,25 @@
     <!-- favorite teams -->
     <ng-container *ngFor="let team of teams">
          <!-- check if in favorites -->
-        <ng-container *ngIf="favorites[team.id] || false" >
-            <h3 header-link="mygames">{{team.name}}</h3>
+        <ng-container *ngIf="favorites[team.id.toString()] || false" >
+            <h3 header-link="mygames">
+                <div class="d-flex">
+                    <div class="col-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16">
+                            <path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z" />
+                        </svg>
+                        {{team.name}}
+                    </div>
+                    <div class="text-right col-6">
+                        <span (click)="favoriteService.setFavorite(team.id,false)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16">
+                                <path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"
+                                />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </h3>
             <ng-container *ngFor="let game of games">
                  <!-- check if team is playing -->
                 <ng-container *ngIf="game.team1Id == team.id || game.team2Id == team.id">  
@@ -12,6 +29,7 @@
             </ng-container>
         </ng-container>
     </ng-container>
+    <!-- upcoming -->
     <h3 header-link="upcoming">Upcoming</h3>
     <ng-container *ngFor="let game of games">
         <app-badge-game [gameId]="game.id"></app-badge-game>

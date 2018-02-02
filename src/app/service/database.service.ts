@@ -17,13 +17,24 @@ export class DatabaseService {
   }
 
   // gets information from db, manages localStore caching
-  public get(key: string): BehaviorSubject<any[]> {
+  public getArray(key: string): BehaviorSubject<any[]> {
     const behaviorSubject = new BehaviorSubject<any[]>(JSON.parse(localStorage.getItem(key)) || []);
     this.db.list(key).valueChanges().subscribe(response => {
       behaviorSubject.next(response);
       localStorage.setItem(key, JSON.stringify(response));
-      console.log(key + ': recieved new data, setting to localStorage');
+      console.log(key + ': recieved new data array, setting to localStorage');
     });
     return behaviorSubject;
   }
+
+  public getObject(key: string): BehaviorSubject<object> {
+    const behaviorSubject = new BehaviorSubject<object>(JSON.parse(localStorage.getItem(key)) || {});
+    this.db.object(key).valueChanges().subscribe(response => {
+      behaviorSubject.next(response);
+      localStorage.setItem(key, JSON.stringify(response));
+      console.log(key + ': recieved new data object, setting to localStorage');
+    });
+    return behaviorSubject;
+  }
+
 }

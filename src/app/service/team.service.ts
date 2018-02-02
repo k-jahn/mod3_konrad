@@ -19,7 +19,7 @@ export class TeamService {
   constructor(
     private databaseService: DatabaseService
   ) {
-    this.databaseService.get('public/teams').subscribe(teamData => {
+    this.databaseService.getArray('public/teams').subscribe(teamData => {
       this.teams.next(teamData.map(team => new Team(team)));
     });
   }

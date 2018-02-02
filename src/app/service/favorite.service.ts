@@ -7,27 +7,29 @@ import { AuthService } from './auth.service';
 import { DatabaseService } from './database.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 
+interface favList {
+  [propName: string]: boolean;
+}
 @Injectable()
 export class FavoriteService {
   private user: firebase.User;
   private favorites = new BehaviorSubject<object>({});
-  public toggleFavorite(teamId: number): void {
-    if (!this.user) {
-      return;
-    }
+  public setFavorite(teamId: number, isFavorite: boolean): void {
     const message = {};
-    message[teamId] = !this.getFavorites().getValue()[teamId] || true;
-    this.databaseService.update('user/' + this.user.uid + '/favorites', message);
+    message[teamId.toString()] = isFavorite;
+    this.databaseService.update('user/' + this.user.uid + '/favorites/' , message);
   }
-  public getFavorites(): BehaviorSubject<object> {
+  public getFavorites(): Observable<object> {
+    console.log(this.favorites.getValue());
     return this.favorites;
   }
-  public getFavorite(teamId: number) {
-    return this.favorites.pipe(
-      map(fav => fav[teamId] || false)
-    );
-  }
+  // public getFavorite(teamId: number): Observable<boolean> {
+  //   return this.favorites.pipe(
+  //     map(fav => fav[teamId] = fav || false)
+  //   );
+  // }
   constructor(
     private authService: AuthService,
     private databaseService: DatabaseService,
@@ -35,7 +37,9 @@ export class FavoriteService {
     this.authService.user.subscribe(user => {
       this.user = user;
       if (this.user) {
-        this.databaseService.get('user/' + this.user.uid + '/favorites').subscribe(fav => this.favorites.next(fav));
+        this.databaseService.getObject('user/' + this.user.uid + '/favorites').subscribe(fav => {
+          this.favorites.next(fav as favList);
+        });
       } else {
         this.favorites.next({});
       }

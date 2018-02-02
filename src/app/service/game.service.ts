@@ -21,7 +21,7 @@ export class GameService {
   constructor(
     private databaseService: DatabaseService
   ) {
-    this.databaseService.get('public/games').subscribe(gamedata => {
+    this.databaseService.getArray('public/games').subscribe(gamedata => {
       this.games.next(gamedata.map(entry => new Game(entry)));
     });
   }

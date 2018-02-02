@@ -18,7 +18,7 @@ export class EventService {
   constructor(
     private databaseService: DatabaseService
   ) {
-    this.databaseService.get('public/events').subscribe(events => {
+    this.databaseService.getArray('public/events').subscribe(events => {
       this.events.next(events.map(e => new Event(e)));
     });
   }

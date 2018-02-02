@@ -4,8 +4,8 @@
       <img src="assets/images/team_logos/{{team.id}}.png">
     </div>
     <div>
-      <ng-container *ngIf="user && favorite != undefined">
-        <button (click)="followToggle()" class="btn">
+      <ng-container *ngIf="user && favorite !== null">
+        <button (click)="favoriteService.setFavorite(teamId,!favorite)" class="btn">
           <ng-container *ngIf="!favorite" >
             follow
           </ng-container>
