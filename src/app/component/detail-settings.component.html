@@ -1,14 +1,21 @@
-<ng-container *ngIf="settings" >
+<h3>
+  Favorite teams:
+</h3>
 
-    Favorite teams:
-    # of upcoming games shown
-    <select>
-      <option *ngFor="let val of [1,2,3,4,5,0]" value="{{val}}">
+<p>
+  # of upcoming games shown
+  <select (change)="change(this)">
+    <option *ngFor="let val of [1,2,3,4,5,0]" value="{{val}}">
+      <ng-container *ngIf="val!=0">
         {{val}}
-      </option>
-    </select>
-    
-    <hr>
-    
-    <h3>My Teams:</h3>
-</ng-container>
+      </ng-container>
+      <ng-container *ngIf="val==0">
+        All
+      </ng-container>
+    </option>
+  </select>
+</p>
+
+<hr>
+
+<h3>My Teams:</h3>

@@ -13,15 +13,18 @@ import {FavList } from '../class/favlist';
 
 @Injectable()
 export class FavoriteService {
+
+  private connection: BehaviorSubject<object>;
   private user: firebase.User;
   private favorites = new BehaviorSubject<object>({});
+
+
   public setFavorite(teamId: number, isFavorite: boolean): void {
     const message = {};
     message[teamId.toString()] = isFavorite;
     this.databaseService.update('user/' + this.user.uid + '/favorites/' , message);
   }
   public getFavorites(): Observable<object> {
-    console.log(this.favorites.getValue());
     return this.favorites;
   }
   public getFavorite(teamId: number): Observable<boolean> {

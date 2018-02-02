@@ -8,6 +8,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 @Injectable()
 export class DatabaseService {
 
+  public connections = {};
+
   constructor(
     private db: AngularFireDatabase
   ) {  }
@@ -16,10 +18,10 @@ export class DatabaseService {
     this.db.object(key).update(data);
   }
 
-  // gets information from db, manages localStore caching
+  // get information from db, manages localStore caching -----------------------------------
   public getArray(key: string): BehaviorSubject<any[]> {
     const behaviorSubject = new BehaviorSubject<any[]>(JSON.parse(localStorage.getItem(key)) || []);
-    this.db.list(key).valueChanges().subscribe(response => {
+    this.connections[key] = this.db.list(key).valueChanges().subscribe(response => {
       behaviorSubject.next(response);
       localStorage.setItem(key, JSON.stringify(response));
       console.log(key + ': recieved new data array, setting to localStorage');
@@ -29,7 +31,7 @@ export class DatabaseService {
 
   public getObject(key: string): BehaviorSubject<object> {
     const behaviorSubject = new BehaviorSubject<object>(JSON.parse(localStorage.getItem(key)) || {});
-    this.db.object(key).valueChanges().subscribe(response => {
+    this.connections[key] = this.db.object(key).valueChanges().subscribe(response => {
       behaviorSubject.next(response);
       localStorage.setItem(key, JSON.stringify(response));
       console.log(key + ': recieved new data object, setting to localStorage');
