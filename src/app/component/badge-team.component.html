@@ -1,4 +1,4 @@
-<div class="teamBadge" *ngIf="format != 'rank'"  [ngClass]="{active: detailActive, small: format === 'small'}">
+<div class="teamBadge" *ngIf="format != 'rank'"  [ngClass]="{small: format === 'small', favorite: favorite}">
   <!-- if team not loaded -->
   <div *ngIf="!team">
     Loading...

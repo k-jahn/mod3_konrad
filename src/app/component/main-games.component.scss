@@ -1,4 +1,12 @@
 // import vars
 @import "../_variables.scss";
 
+.favorite {
+    color: $cContrast;
+    div div:first-child{
+        svg {
+            fill: $cContrast;
+        }
+    }
+}
 

@@ -3,7 +3,7 @@
     <ng-container *ngFor="let team of teams">
          <!-- check if in favorites -->
         <ng-container *ngIf="favorites[team.id.toString()] || false" >
-            <h3 header-link="mygames">
+            <h3 header-link="Team ${team.id}" class="favorite">
                 <div class="d-flex">
                     <div class="col-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16">
@@ -21,11 +21,8 @@
                     </div>
                 </div>
             </h3>
-            <ng-container *ngFor="let game of games">
-                 <!-- check if team is playing -->
-                <ng-container *ngIf="game.team1Id == team.id || game.team2Id == team.id">  
-                    <app-badge-game [gameId]="game.id"></app-badge-game>
-                </ng-container>
+            <ng-container *ngFor="let game of getFavGames(team.id)">
+                <app-badge-game [gameId]="game.id"></app-badge-game>
             </ng-container>
         </ng-container>
     </ng-container>

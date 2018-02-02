@@ -20,7 +20,9 @@ export class MainGamesComponent implements OnInit, OnDestroy {
   games: Game[];
   teams: Team[];
   favorites = {};
-
+  getFavGames(teamId: number): Game[] {
+    return this.games.filter(game => game.team1Id === teamId || game.team2Id === teamId).slice(0, 2);
+  }
 
   constructor(
     private favoriteService: FavoriteService,

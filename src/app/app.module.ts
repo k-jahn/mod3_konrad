@@ -20,6 +20,7 @@ import { DetailAboutComponent } from './component/detail-about.component';
 import { DetailEmptyComponent } from './component/detail-empty.component';
 import { DetailGameComponent } from './component/detail-game.component';
 import { DetailTeamComponent } from './component/detail-team.component';
+import { DetailSettingsComponent } from './component/detail-settings.component';
 import { MainComponent } from './component/main.component';
 import { MainGamesComponent } from './component/main-games.component';
 import { MainNewsComponent } from './component/main-news.component';
@@ -41,6 +42,7 @@ import { AuthService } from './service/auth.service';
 import { CommentService } from './service/comment.service';
 import { DatabaseService } from './service/database.service';
 import { MainSubnavLinksService } from './service/main-subnav-links.service';
+import { SettingsService } from './service/settings.service';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { MainSubnavLinksService } from './service/main-subnav-links.service';
     DetailAboutComponent,
     DetailEmptyComponent,
     DetailGameComponent,
+    DetailSeasonComponent,
+    DetailSettingsComponent,
     DetailTeamComponent,
     MainComponent,
     MainGamesComponent,
@@ -57,7 +61,6 @@ import { MainSubnavLinksService } from './service/main-subnav-links.service';
     MainTeamsComponent,
     MenuComponent,
     MainSubnavComponent,
-    DetailSeasonComponent,
   ],
   imports: [
     AngularFireAuthModule,
@@ -79,6 +82,7 @@ import { MainSubnavLinksService } from './service/main-subnav-links.service';
     CommentService,
     DatabaseService,
     MainSubnavLinksService,
+    SettingsService,
   ],
   bootstrap: [AppComponent]
 })

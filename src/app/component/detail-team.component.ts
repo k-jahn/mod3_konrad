@@ -55,6 +55,6 @@ export class DetailTeamComponent implements OnInit {
       });
     });
     this.authService.user.subscribe(user => this.user = user);
-    this.favoriteService.getFavorites().subscribe(fav => this.favorite = fav[this.teamId.toString()] || false);
+    this.favoriteService.getFavorite(this.teamId).subscribe(fav => this.favorite = fav || false);
   }
 }

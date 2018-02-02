@@ -10,6 +10,7 @@ import { Team  } from '../class/team';
 
 import { MONTH } from '../const/month';
 import { SCHOOL } from '../const/school';
+import { FavoriteService } from '../service/favorite.service';
 
 @Component({
   selector: 'app-badge-game',
@@ -23,10 +24,14 @@ export class BadgeGameComponent implements OnInit, OnChanges {
   team1: Team;
   team2: Team;
   detailActive = false;
+  favoriteTeam1: boolean;
+  favoriteTeam2: boolean;
+  favorite: boolean;
 
   month = MONTH;
 
   constructor(
+    private favoriteService: FavoriteService,
     private gameService: GameService,
     private teamService: TeamService,
     private router: Router,
@@ -38,8 +43,14 @@ export class BadgeGameComponent implements OnInit, OnChanges {
   ngOnChanges() {
     this.gameService.getGame(this.gameId).subscribe(game => {
       this.game = game;
-      this.teamService.getTeam(this.game.team1Id).subscribe(team => this.team1 = team);
-      this.teamService.getTeam(this.game.team2Id).subscribe(team => this.team2 = team);
+      this.teamService.getTeam(this.game.team1Id).subscribe(team => {
+        this.team1 = team;
+        this.favoriteService.getFavorite(this.team1.id).subscribe(fav => this.favoriteTeam1 = fav);
+      });
+      this.teamService.getTeam(this.game.team2Id).subscribe(team => {
+        this.team2 = team;
+        this.favoriteService.getFavorite(this.team2.id).subscribe(fav => this.favoriteTeam2 = fav);
+      });
     });
     this.router.events.subscribe((val) => {
       if (this.location.path() === '/game/' + this.gameId) {

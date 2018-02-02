@@ -9,9 +9,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 
-interface favList {
-  [propName: string]: boolean;
-}
+import {FavList } from '../class/favlist';
+
 @Injectable()
 export class FavoriteService {
   private user: firebase.User;
@@ -25,11 +24,11 @@ export class FavoriteService {
     console.log(this.favorites.getValue());
     return this.favorites;
   }
-  // public getFavorite(teamId: number): Observable<boolean> {
-  //   return this.favorites.pipe(
-  //     map(fav => fav[teamId] = fav || false)
-  //   );
-  // }
+  public getFavorite(teamId: number): Observable<boolean> {
+    return this.favorites.pipe(
+      map(fav => fav = fav[teamId.toString()] || false)
+    );
+  }
   constructor(
     private authService: AuthService,
     private databaseService: DatabaseService,
@@ -38,7 +37,7 @@ export class FavoriteService {
       this.user = user;
       if (this.user) {
         this.databaseService.getObject('user/' + this.user.uid + '/favorites').subscribe(fav => {
-          this.favorites.next(fav as favList);
+          this.favorites.next(fav as FavList);
         });
       } else {
         this.favorites.next({});

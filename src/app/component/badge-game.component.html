@@ -1,4 +1,4 @@
-<div class="gameBadge" [ngClass]="{active: detailActive}">
+<div class="gameBadge" [ngClass]="{active: detailActive, favorite: (favoriteTeam1 || favoriteTeam2)}">
   <ng-container *ngIf="!game">
     Loading...
   </ng-container>

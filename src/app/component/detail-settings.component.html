@@ -1,0 +1,14 @@
+<ng-container *ngIf="settings" >
+
+    Favorite teams:
+    # of upcoming games shown
+    <select>
+      <option *ngFor="let val of [1,2,3,4,5,0]" value="{{val}}">
+        {{val}}
+      </option>
+    </select>
+    
+    <hr>
+    
+    <h3>My Teams:</h3>
+</ng-container>

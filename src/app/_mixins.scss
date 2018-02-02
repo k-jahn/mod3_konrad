@@ -29,6 +29,9 @@
         margin: 0.5rem;
     }
     &.active {
+        box-shadow:  0 0 3px 3px $cPrimary;
+    }
+    &.favorite {
         box-shadow:  0 0 3px 3px $cContrast;
     }
     .label {
@@ -36,6 +39,10 @@
         color: $tPrimary;
         font-weight: bold;
         font-size: 20px;
+        @include round;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    
     }
     div {
         padding: 0em 0;

@@ -11,6 +11,7 @@ import { Team } from '../class/team';
 
 // const
 import { SCHOOL } from '../const/school';
+import { FavoriteService } from '../service/favorite.service';
 
 @Component({
   selector: 'app-badge-team',
@@ -22,19 +23,24 @@ export class BadgeTeamComponent implements OnInit, OnChanges {
   @Input() format: string;
   team: Team;
   detailActive = false;
+  favorite: boolean;
 
   school = SCHOOL;
 
   constructor(
-    private teamService: TeamService,
-    private router: Router,
+    private favoriteService: FavoriteService,
     private location: Location,
+    private router: Router,
+    private teamService: TeamService,
   ) { }
 
   ngOnInit() {
   }
   ngOnChanges() {
-    this.teamService.getTeam(this.teamId).subscribe(team => this.team = team);
+    this.teamService.getTeam(this.teamId).subscribe(team => {
+      this.team = team;
+      this.favoriteService.getFavorite(this.teamId).subscribe(fav => this.favorite = fav);
+    });
     this.router.events.subscribe((val) => {
       if (this.location.path() === '/team/' + this.teamId) {
         this.detailActive = true;
