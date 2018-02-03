@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // ng.material
+import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 // firebase
@@ -26,23 +27,21 @@ import { MainGamesComponent } from './component/main-games.component';
 import { MainNewsComponent } from './component/main-news.component';
 import { MainTeamsComponent } from './component/main-teams.component';
 import { MenuComponent } from './component/menu.component';
-import { MainSubnavComponent } from './component/main-subnav.component';
 import { BadgeTeamComponent } from './component/badge-team.component';
 import { BadgeGameComponent } from './component/badge-game.component';
+import { DetailSeasonComponent } from './component/detail-season.component';
 // services
 import { EventService } from './service/event.service';
 import { GameService } from './service/game.service';
 import { TeamService } from './service/team.service';
-// modules
-import { AppRoutingModule } from './app-routing.module';
 import { AppTitleService } from './service/app-title.service';
-import { DetailSeasonComponent } from './component/detail-season.component';
 import { FavoriteService } from './service/favorite.service';
 import { AuthService } from './service/auth.service';
 import { CommentService } from './service/comment.service';
 import { DatabaseService } from './service/database.service';
-import { MainSubnavLinksService } from './service/main-subnav-links.service';
 import { SettingsService } from './service/settings.service';
+// modules
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -60,7 +59,6 @@ import { SettingsService } from './service/settings.service';
     MainNewsComponent,
     MainTeamsComponent,
     MenuComponent,
-    MainSubnavComponent,
   ],
   imports: [
     AngularFireAuthModule,
@@ -70,6 +68,7 @@ import { SettingsService } from './service/settings.service';
     BrowserAnimationsModule,
     BrowserModule,
     MatSidenavModule,
+    MatSelectModule,
     MatTabsModule,
   ],
   providers: [
@@ -81,7 +80,6 @@ import { SettingsService } from './service/settings.service';
     AuthService,
     CommentService,
     DatabaseService,
-    MainSubnavLinksService,
     SettingsService,
   ],
   bootstrap: [AppComponent]

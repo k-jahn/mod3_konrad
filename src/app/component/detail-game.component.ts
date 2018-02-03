@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import * as firebase from 'firebase/app';
 
+// parents
+import { Unsubscribe } from './_unsubscribe';
 
 // services
 import { AuthService } from '../service/auth.service';
@@ -25,7 +27,7 @@ import { MONTH } from '../const/month';
   templateUrl: './detail-game.component.html',
   styleUrls: ['./detail-game.component.scss']
 })
-export class DetailGameComponent implements OnInit {
+export class DetailGameComponent extends Unsubscribe implements OnInit {
   gameId: number;
   game: Game;
   user: firebase.User;
@@ -41,19 +43,24 @@ export class DetailGameComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
   ) {
+    super();
   }
 
   ngOnInit() {
     // get gameId from route
-    this.route.paramMap.subscribe(paramMap => {
-      this.gameId = +paramMap.get('id');
-      this.gameService.getGame(this.gameId).subscribe(game => {
-        this.game = game;
-        Promise.resolve(null).then(() => this.titleService.setTitle.next(this.game.name));
-      });
-    });
+    super.addSubscription(
+      this.route.paramMap.subscribe(paramMap => {
+        this.gameId = +paramMap.get('id');
+        super.addSubscription(
+          this.gameService.getGame(this.gameId).subscribe(game => {
+            this.game = game;
+          })
+        );
+      })
+    );
     // subscribe to user
-    this.authService.user.subscribe(user => this.user = user);
+    super.addSubscription(
+      this.authService.user.subscribe(user => this.user = user)
+    );
   }
-
 }

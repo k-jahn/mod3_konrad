@@ -7,8 +7,8 @@
 
 // page div for main screens =========================================================================
 .page {
-    margin-top: $subnavHeight;
-    height: calc(100vh - #{$navHeight + $headerHeight + $subnavHeight});
+    margin-top: 0;
+    height: calc(100vh - #{$navHeight + $headerHeight});
     width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -49,6 +49,9 @@ p,h4,dt,dd {
 
 // overwrite material styles ===========================================================================
 // todo: less bulldozer
+.mat-select {
+    width: 50px !important;
+}
 .mat-tab-group {
     .mat-tab-label-container {
         z-index: 20;

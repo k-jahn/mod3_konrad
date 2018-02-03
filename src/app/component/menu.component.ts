@@ -26,13 +26,6 @@ export class MenuComponent implements OnInit {
     this.app.menu.toggle();
   }
 
-  login(): void {
-    this.authService.login();
-  }
-  logout(): void {
-    this.authService.logout();
-  }
-
   ngOnInit() {
     this.authService.user.subscribe(user => this.user = user);
   }

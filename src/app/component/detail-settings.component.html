@@ -3,19 +3,31 @@
 </h3>
 
 <p>
-  # of upcoming games shown
-  <select (change)="change(this)">
-    <option *ngFor="let val of [1,2,3,4,5,0]" value="{{val}}">
+  <mat-select (change)="change('favoritesToShow')" [(value)]="model.favoritesToShow">
+    <mat-option *ngFor="let val of [1,2,3,0]" value="{{val}}">
       <ng-container *ngIf="val!=0">
         {{val}}
       </ng-container>
       <ng-container *ngIf="val==0">
         All
       </ng-container>
-    </option>
-  </select>
+    </mat-option>
+  </mat-select>
+  games shown per Team
 </p>
 
-<hr>
-
-<h3>My Teams:</h3>
+<!-- favorite teams -->
+<ng-container *ngFor="let team of teams">
+  <!-- check if in favorites -->
+  <ng-container *ngIf="favorites[team.id.toString()] || false">
+    <div class="d-flex align-items-center justify-content-center">
+      <app-badge-team [teamId]="team.id" [format]="'small'"></app-badge-team>
+      <span class="fav" (click)="favoriteService.setFavorite(team.id,false)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16">
+          <path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"
+          />
+        </svg>
+      </span>
+    </div>
+  </ng-container>
+</ng-container>

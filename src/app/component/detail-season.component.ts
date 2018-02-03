@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
+// parents
+import { Unsubscribe } from './_unsubscribe';
+
 // class
 import { Game } from '../class/game';
 import { Team } from '../class/team';
@@ -15,7 +18,7 @@ import { AppTitleService } from '../service/app-title.service';
   styleUrls: ['./detail-season.component.scss']
 })
 
-export class DetailSeasonComponent implements OnInit {
+export class DetailSeasonComponent extends Unsubscribe implements OnInit {
 
   games: Game[];
   teams: Team[];
@@ -29,13 +32,16 @@ export class DetailSeasonComponent implements OnInit {
     private gameService: GameService,
     private titleService: AppTitleService,
     private router: Router,
-  ) { }
+  ) {
+    super();
+  }
 
   ngOnInit() {
     // get data
-    this.gameService.getPlayedGames().subscribe(games => {
-      this.games = games;
-    });
-    Promise.resolve(null).then(() => this.titleService.setTitle.next('Archive: Season'));
+    super.addSubscription(
+      this.gameService.getPlayedGames().subscribe(games => {
+        this.games = games;
+      })
+    );
   }
 }

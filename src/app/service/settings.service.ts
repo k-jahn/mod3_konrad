@@ -1,4 +1,4 @@
-// service for event data =====================================================================
+// service for settings data =====================================================================
 import { Injectable } from '@angular/core';
 
 // rxjs
@@ -15,9 +15,12 @@ import { AuthService } from './auth.service';
 
 // interface
 import { Settings } from '../class/settings';
+import { Subscription } from 'rxjs/Subscription';
 
 @Injectable()
 export class SettingsService {
+
+  private connection: Subscription;
   private user: firebase.User;
   private settings = new BehaviorSubject<Settings>(null);
 
@@ -26,9 +29,14 @@ export class SettingsService {
     private authService: AuthService,
   ) {
     this.authService.user.subscribe(user => {
+      if (this.connection) {
+        this.connection.unsubscribe();
+      }
       this.user = user;
       if (this.user) {
-        this.databaseService.getObject(`user/${this.user.uid}/settings`).subscribe(settings => this.settings.next(settings as Settings));
+        this.connection = this.databaseService
+          .getObject(`user/${this.user.uid}/settings`)
+          .subscribe(settings => this.settings.next(settings as Settings));
       }
     });
   }

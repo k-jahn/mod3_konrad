@@ -7,7 +7,7 @@
   <div *ngIf="team && team.id != 0" (click)="router.navigate(['/team/', team.id.toString()])">
     <!-- standard format -->
     <ng-container *ngIf="!format">
-      <div class="d-flex">
+      <div class="d-flex align-items-center">
         <div class="col-4 label">
           <img src="assets/images/team_logos/{{team.id}}.png">
         </div>

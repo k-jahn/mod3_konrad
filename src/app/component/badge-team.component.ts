@@ -6,7 +6,10 @@ import { Router } from '@angular/router';
 // service
 import { TeamService } from '../service/team.service';
 
-// class
+// parent
+import { Unsubscribe } from './_unsubscribe';
+
+// interface
 import { Team } from '../class/team';
 
 // const
@@ -18,7 +21,7 @@ import { FavoriteService } from '../service/favorite.service';
   templateUrl: './badge-team.component.html',
   styleUrls: ['./badge-team.component.scss']
 })
-export class BadgeTeamComponent implements OnInit, OnChanges {
+export class BadgeTeamComponent extends Unsubscribe implements OnInit, OnChanges {
   @Input() teamId: number;
   @Input() format: string;
   team: Team;
@@ -32,21 +35,29 @@ export class BadgeTeamComponent implements OnInit, OnChanges {
     private location: Location,
     private router: Router,
     private teamService: TeamService,
-  ) { }
+  ) {
+    super();
+  }
 
   ngOnInit() {
   }
   ngOnChanges() {
-    this.teamService.getTeam(this.teamId).subscribe(team => {
-      this.team = team;
-      this.favoriteService.getFavorite(this.teamId).subscribe(fav => this.favorite = fav);
-    });
-    this.router.events.subscribe((val) => {
-      if (this.location.path() === '/team/' + this.teamId) {
-        this.detailActive = true;
-      } else {
-        this.detailActive = false;
-      }
-    });
+    super.addSubscription(
+      this.teamService.getTeam(this.teamId).subscribe(team => {
+        this.team = team;
+        super.addSubscription(
+          this.favoriteService.getFavorite(this.teamId).subscribe(fav => this.favorite = fav)
+        );
+      })
+    );
+    super.addSubscription(
+      this.router.events.subscribe((val) => {
+        if (this.location.path() === '/team/' + this.teamId) {
+          this.detailActive = true;
+        } else {
+          this.detailActive = false;
+        }
+      })
+    );
   }
 }

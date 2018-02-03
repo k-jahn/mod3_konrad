@@ -9,6 +9,10 @@ import { Team } from '../class/team';
 import { GameService } from '../service/game.service';
 import { FavoriteService } from '../service/favorite.service';
 import { TeamService } from '../service/team.service';
+import { SettingsService } from '../service/settings.service';
+
+// parents
+import { Unsubscribe } from './_unsubscribe';
 
 @Component({
   selector: 'app-main-games',
@@ -16,7 +20,7 @@ import { TeamService } from '../service/team.service';
   styleUrls: ['./main-games.component.scss']
 })
 
-export class MainGamesComponent implements OnInit, OnDestroy {
+export class MainGamesComponent extends Unsubscribe implements OnInit, OnDestroy {
   games: Game[];
   teams: Team[];
   favorites = {};
@@ -29,16 +33,22 @@ export class MainGamesComponent implements OnInit, OnDestroy {
     private gameService: GameService,
     private teamService: TeamService,
     private router: Router,
-  ) { }
+    private settingsService: SettingsService,
+  ) {
+    super();
+  }
 
   ngOnInit() {
     // get data
-    this.gameService.getUnplayedGames().subscribe(games => {
-      this.games = games;
-    });
-    this.favoriteService.getFavorites().subscribe(fav => this.favorites = fav);
-    this.teamService.getTeams().subscribe(teams => this.teams = teams);
+    super.addSubscription(
+      this.gameService.getUnplayedGames().subscribe(games => {
+        this.games = games;
+      }),
+      this.favoriteService.getFavorites().subscribe(fav => this.favorites = fav),
+      this.teamService.getTeams().subscribe(teams => this.teams = teams),
+    );
   }
+
   ngOnDestroy() {
   }
 }

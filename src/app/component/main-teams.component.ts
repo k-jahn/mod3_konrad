@@ -15,9 +15,9 @@ import { TeamService } from '../service/team.service';
   styleUrls: ['./main-teams.component.scss']
 })
 export class MainTeamsComponent implements OnInit, OnDestroy {
+
   teams: Team[];
   teamsRanked: Team[];
-  scroll = 0;
 
 
 

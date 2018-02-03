@@ -25,17 +25,6 @@ export class MainComponent implements OnInit, OnDestroy {
       label: 'Teams',
     },
   ];
-  // links for subnav, edited by current location
-  public subnavLinks: Link[] =  [
-    {
-      path: '#mygames',
-      label: 'My Games',
-    },
-    {
-      path: '#upcoming',
-      label: 'upcoming',
-    },
-  ];
   selectedIndex = 1;
   private swipeCoord?: [number, number];
   private swipeTime?: number;

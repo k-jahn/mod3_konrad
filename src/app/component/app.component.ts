@@ -33,7 +33,7 @@ export class AppComponent {
           this.sideBySide = false;
         }
     });
-    this.titleService.setTitle.subscribe(x => this.title = x);
+    this.titleService.getTitle().subscribe(x => this.title = x);
   }
 
   goTo(path): void {

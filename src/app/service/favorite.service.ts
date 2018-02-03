@@ -14,9 +14,9 @@ import {FavList } from '../class/favlist';
 @Injectable()
 export class FavoriteService {
 
-  private connection: BehaviorSubject<object>;
+  private connection;
   private user: firebase.User;
-  private favorites = new BehaviorSubject<object>({});
+  private favorites = new BehaviorSubject<FavList>({});
 
 
   public setFavorite(teamId: number, isFavorite: boolean): void {
@@ -24,12 +24,12 @@ export class FavoriteService {
     message[teamId.toString()] = isFavorite;
     this.databaseService.update('user/' + this.user.uid + '/favorites/' , message);
   }
-  public getFavorites(): Observable<object> {
+  public getFavorites(): Observable<FavList> {
     return this.favorites;
   }
   public getFavorite(teamId: number): Observable<boolean> {
     return this.favorites.pipe(
-      map(fav => fav = fav[teamId.toString()] || false)
+      map(fav => fav[teamId.toString()] || false)
     );
   }
   constructor(
@@ -37,9 +37,12 @@ export class FavoriteService {
     private databaseService: DatabaseService,
   ) {
     this.authService.user.subscribe(user => {
+      if (this.connection) {
+        this.connection.unsubscribe();
+      }
       this.user = user;
       if (this.user) {
-        this.databaseService.getObject('user/' + this.user.uid + '/favorites').subscribe(fav => {
+        this.connection = this.databaseService.getObject('user/' + this.user.uid + '/favorites').subscribe(fav => {
           this.favorites.next(fav as FavList);
         });
       } else {
