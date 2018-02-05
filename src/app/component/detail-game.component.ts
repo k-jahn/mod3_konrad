@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import * as firebase from 'firebase/app';
 
 // parents
-import { Unsubscribe } from './_unsubscribe';
+import { Unsubscribe } from '../_unsubscribe';
 
 // services
 import { AuthService } from '../service/auth.service';

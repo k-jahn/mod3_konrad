@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 // parents
-import { Unsubscribe } from './_unsubscribe';
+import { Unsubscribe } from '../_unsubscribe';
 
 // class
 import { Game } from '../class/game';

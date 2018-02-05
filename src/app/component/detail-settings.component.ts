@@ -7,7 +7,7 @@ import { SettingsService } from '../service/settings.service';
 import { TeamService } from '../service/team.service';
 
 // parents
-import { Unsubscribe } from './_unsubscribe';
+import { Unsubscribe } from '../_unsubscribe';
 
 
 import { Team } from '../class/team';

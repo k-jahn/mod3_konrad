@@ -11,7 +11,7 @@ import { FavoriteService } from '../service/favorite.service';
 import { AuthService } from '../service/auth.service';
 
 // parents
-import { Unsubscribe } from './_unsubscribe';
+import { Unsubscribe } from '../_unsubscribe';
 
 // classes
 import { Team } from '../class/team';

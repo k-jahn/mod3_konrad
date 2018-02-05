@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { TeamService } from '../service/team.service';
 
 // parent
-import { Unsubscribe } from './_unsubscribe';
+import { Unsubscribe } from '../_unsubscribe';
 
 // interface
 import { Team } from '../class/team';

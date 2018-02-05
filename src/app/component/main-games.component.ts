@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 // class
@@ -12,7 +12,7 @@ import { TeamService } from '../service/team.service';
 import { SettingsService } from '../service/settings.service';
 
 // parents
-import { Unsubscribe } from './_unsubscribe';
+import { Unsubscribe } from '../_unsubscribe';
 
 @Component({
   selector: 'app-main-games',
@@ -20,7 +20,7 @@ import { Unsubscribe } from './_unsubscribe';
   styleUrls: ['./main-games.component.scss']
 })
 
-export class MainGamesComponent extends Unsubscribe implements OnInit, OnDestroy {
+export class MainGamesComponent extends Unsubscribe implements OnInit {
   games: Game[];
   teams: Team[];
   favorites = {};
@@ -49,6 +49,4 @@ export class MainGamesComponent extends Unsubscribe implements OnInit, OnDestroy
     );
   }
 
-  ngOnDestroy() {
-  }
 }

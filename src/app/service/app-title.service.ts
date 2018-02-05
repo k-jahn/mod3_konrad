@@ -8,6 +8,12 @@ import { Router } from '@angular/router';
 export class AppTitleService {
 
   private title = new BehaviorSubject<string>('');
+  private titleMap = [
+    {
+      regEx: /game/,
+    },
+  ];
+
 
   public getTitle() {
     return this.title;
@@ -19,10 +25,8 @@ export class AppTitleService {
     private router: Router
   ) {
     router.events.subscribe((val) => {
-      console.log(location.path());
-      switch (location.path()) {
+      const url = location.path();
 
-      }
     });
   }
 
