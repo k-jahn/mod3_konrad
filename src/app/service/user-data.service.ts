@@ -16,8 +16,8 @@ import { Settings } from '../class/settings';
 @Injectable()
 export class UserDataService extends DatabaseService {
   private user: firebase.User;
-  private favorites: Observable<FavList>;
-  private settings: Observable<Settings>;
+  private favorites = new BehaviorSubject<FavList>({});
+  private settings = new BehaviorSubject<Settings>(null);
 
   constructor(
     private authService: AuthService,
@@ -28,11 +28,11 @@ export class UserDataService extends DatabaseService {
       this.closeConnections();
       this.user = user;
       if (this.user) {
-        this.favorites = this.getObject(`/user/${this.user.uid}/favorites`).map(favorite => favorite as FavList);
-        this.settings = this.getObject(`user/${this.user.uid}/settings`).map(settings => settings as Settings);
+        this.getObject(`/user/${this.user.uid}/favorites`).subscribe(favorite => this.favorites.next(favorite as FavList));
+        this.getObject(`user/${this.user.uid}/settings`).map(settings => this.settings.next(settings as Settings));
       } else {
-        this.favorites = null;
-        this.settings = null;
+        this.favorites.next({});
+        this.settings.next(null);
       }
     });
   }

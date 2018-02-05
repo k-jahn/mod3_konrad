@@ -5,7 +5,7 @@
     </div>
     <div>
       <ng-container *ngIf="user && favorite !== null">
-        <button (click)="favoriteService.setFavorite(teamId,!favorite)" class="btn">
+        <button (click)="userDataService.setFavorite(teamId,!favorite)" class="btn">
           <ng-container *ngIf="!favorite" >
             follow
           </ng-container>

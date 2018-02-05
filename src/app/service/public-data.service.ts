@@ -38,7 +38,7 @@ export class PublicDataService extends DatabaseService {
     super(db);
   }
 
-  // game methods ========================================================
+  // games methods ========================================================
 
   public getPlayedGames(): Observable<Game[]> {
     return this.games
@@ -71,7 +71,7 @@ export class PublicDataService extends DatabaseService {
       );
   }
 
-  // event methods ==================================================================
+  // events methods ==================================================================
   getEvents(): Observable<Event[]> {
     return this.events;
   }

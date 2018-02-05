@@ -26,7 +26,7 @@ export class DatabaseService {
 
   // get information from db, manages localStore caching -----------------------------------
   protected getArray(key: string): BehaviorSubject<any[]> {
-    const behaviorSubject = new BehaviorSubject<any[]>(JSON.parse(localStorage.getItem(key)) || []);
+    const behaviorSubject = new BehaviorSubject<any[]>(JSON.parse(localStorage.getItem(key)) || null);
     this.connections.push(
       this.db.list(key).valueChanges().subscribe(response => {
         behaviorSubject.next(response);
@@ -38,7 +38,7 @@ export class DatabaseService {
   }
 
   protected getObject(key: string): BehaviorSubject<object> {
-    const behaviorSubject = new BehaviorSubject<object>(JSON.parse(localStorage.getItem(key)) || {});
+    const behaviorSubject = new BehaviorSubject<object>(JSON.parse(localStorage.getItem(key)) || null);
     this.connections.push(
       this.db.object(key).valueChanges().subscribe(response => {
         behaviorSubject.next(response);

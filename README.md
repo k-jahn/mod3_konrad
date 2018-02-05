@@ -10,7 +10,6 @@ built with Angular5, AngularFire2 and Firebase
 ## TODO
 * different Login Methods
 * game comment function
-* scrollspy // subnav
 * rework titleService
 
 ## Third Party

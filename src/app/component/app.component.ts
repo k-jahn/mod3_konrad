@@ -4,6 +4,8 @@ import { Location, NgClass } from '@angular/common';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AppTitleService } from '../service/app-title.service';
+import { UserDataService } from '../service/user-data.service';
+import { PublicDataService } from '../service/public-data.service';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +25,9 @@ export class AppComponent {
     private router: Router,
     private location: Location,
     private titleService: AppTitleService,
+    // testing
+    private userDataService: UserDataService,
+    private publicDataService: PublicDataService,
   ) {
     router.events.subscribe((val) => {
         const reg = /(game)|(team)/;
