@@ -31,15 +31,10 @@ import { BadgeTeamComponent } from './component/badge-team.component';
 import { BadgeGameComponent } from './component/badge-game.component';
 import { DetailSeasonComponent } from './component/detail-season.component';
 // services
-import { EventService } from './service/event.service';
-import { GameService } from './service/game.service';
-import { TeamService } from './service/team.service';
 import { AppTitleService } from './service/app-title.service';
-import { FavoriteService } from './service/favorite.service';
 import { AuthService } from './service/auth.service';
-import { CommentService } from './service/comment.service';
-import { DatabaseService } from './service/database.service';
-import { SettingsService } from './service/settings.service';
+import { PublicDataService } from './service/public-data.service';
+import { UserDataService } from './service/user-data.service';
 // modules
 import { AppRoutingModule } from './app-routing.module';
 
@@ -72,15 +67,10 @@ import { AppRoutingModule } from './app-routing.module';
     MatTabsModule,
   ],
   providers: [
-    EventService,
-    GameService,
-    TeamService,
     AppTitleService,
-    FavoriteService,
     AuthService,
-    CommentService,
-    DatabaseService,
-    SettingsService,
+    PublicDataService,
+    UserDataService,
   ],
   bootstrap: [AppComponent]
 })

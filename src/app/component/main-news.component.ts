@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 // class
 import { Event } from '../class/event';
+import { PublicDataService } from '../service/public-data.service';
 
 // service
-import { EventService } from '../service/event.service';
 
 @Component({
   selector: 'app-main-news',
@@ -15,11 +15,11 @@ export class MainNewsComponent implements OnInit, OnDestroy {
   events: Event[];
 
   constructor(
-    private eventService: EventService,
+    private publicDataService: PublicDataService,
   ) { }
 
   ngOnInit(  ) {
-    this.eventService.getEvents().subscribe(events => {
+    this.publicDataService.getEvents().subscribe(events => {
       this.events = events;
     });
   }

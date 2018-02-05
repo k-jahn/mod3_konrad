@@ -6,10 +6,8 @@ import { Game } from '../class/game';
 import { Team } from '../class/team';
 
 // service
-import { GameService } from '../service/game.service';
-import { FavoriteService } from '../service/favorite.service';
-import { TeamService } from '../service/team.service';
-import { SettingsService } from '../service/settings.service';
+import { PublicDataService } from '../service/public-data.service';
+import { UserDataService } from '../service/user-data.service';
 
 // parents
 import { Unsubscribe } from '../_unsubscribe';
@@ -29,23 +27,21 @@ export class MainGamesComponent extends Unsubscribe implements OnInit {
   }
 
   constructor(
-    private favoriteService: FavoriteService,
-    private gameService: GameService,
-    private teamService: TeamService,
+    private userDataService: UserDataService,
+    private publicDataService: PublicDataService,
     private router: Router,
-    private settingsService: SettingsService,
   ) {
     super();
   }
 
   ngOnInit() {
     // get data
-    super.addSubscription(
-      this.gameService.getUnplayedGames().subscribe(games => {
+    this.addSubscription(
+      this.publicDataService.getUnplayedGames().subscribe(games => {
         this.games = games;
       }),
-      this.favoriteService.getFavorites().subscribe(fav => this.favorites = fav),
-      this.teamService.getTeams().subscribe(teams => this.teams = teams),
+      this.userDataService.getFavorites().subscribe(fav => this.favorites = fav),
+      this.publicDataService.getTeams().subscribe(teams => this.teams = teams),
     );
   }
 

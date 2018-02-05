@@ -9,8 +9,7 @@ import { Unsubscribe } from '../_unsubscribe';
 
 // services
 import { AuthService } from '../service/auth.service';
-import { GameService } from '../service/game.service';
-import { TeamService } from '../service/team.service';
+import { PublicDataService } from '../service/public-data.service';
 import { AppTitleService } from '../service/app-title.service';
 
 
@@ -37,7 +36,7 @@ export class DetailGameComponent extends Unsubscribe implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private gameService: GameService,
+    private publicDataService: PublicDataService,
     private location: Location,
     private titleService: AppTitleService,
     private router: Router,
@@ -48,18 +47,18 @@ export class DetailGameComponent extends Unsubscribe implements OnInit {
 
   ngOnInit() {
     // get gameId from route
-    super.addSubscription(
+    this.addSubscription(
       this.route.paramMap.subscribe(paramMap => {
         this.gameId = +paramMap.get('id');
-        super.addSubscription(
-          this.gameService.getGame(this.gameId).subscribe(game => {
+        this.addSubscription(
+          this.publicDataService.getGame(this.gameId).subscribe(game => {
             this.game = game;
           })
         );
       })
     );
     // subscribe to user
-    super.addSubscription(
+    this.addSubscription(
       this.authService.user.subscribe(user => this.user = user)
     );
   }

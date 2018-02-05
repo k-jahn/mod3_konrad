@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { Team } from '../class/team';
 
 // service
-import { TeamService } from '../service/team.service';
+import { PublicDataService } from '../service/public-data.service';
 
 
 @Component({
@@ -22,16 +22,16 @@ export class MainTeamsComponent implements OnInit, OnDestroy {
 
 
   constructor(
-    private teamService: TeamService,
+    private publicDataService: PublicDataService,
     private router: Router,
   ) { }
 
   ngOnInit() {
     // get Teams
-    this.teamService.getTeams().subscribe(teams => {
+    this.publicDataService.getTeams().subscribe(teams => {
       this.teams = teams;
     });
-    this.teamService.getRankedTeams().subscribe(teams => {
+    this.publicDataService.getRankedTeams().subscribe(teams => {
       this.teamsRanked = teams;
     });
   }

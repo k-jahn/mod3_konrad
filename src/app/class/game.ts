@@ -1,5 +1,5 @@
 // Game class definintion
-export class Game {
+export interface Game {
     id: number;
     name: string;
     month: number;
@@ -12,9 +12,4 @@ export class Game {
     played: boolean;
     team1goals: number;
     team2goals: number;
-    constructor(data: object) {
-        for (const key of Object.getOwnPropertyNames(data)) {
-            this[key] = data[key];
-        }
-    }
 }

@@ -4,10 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase/app';
 
 // services
-import { TeamService } from '../service/team.service';
-import { GameService } from '../service/game.service';
+import { PublicDataService } from '../service/public-data.service';
 import { AppTitleService } from '../service/app-title.service';
-import { FavoriteService } from '../service/favorite.service';
+import { UserDataService } from '../service/user-data.service';
 import { AuthService } from '../service/auth.service';
 
 // parents
@@ -38,32 +37,31 @@ export class DetailTeamComponent extends Unsubscribe implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private gameService: GameService,
     private route: ActivatedRoute,
-    private teamService: TeamService,
     private titleService: AppTitleService,
-    private favoriteService: FavoriteService,
+    private publicDataService: PublicDataService,
+    private userDataService: UserDataService,
   ) {
     super();
   }
 
 
   ngOnInit() {
-    super.addSubscription(
+    this.addSubscription(
       // get teamId from route
       this.route.paramMap.subscribe(paraMap => {
         this.teamId = +paraMap.get('id');
-        super.addSubscription(
-          this.teamService.getTeam(this.teamId).subscribe(team => {
+        this.addSubscription(
+          this.publicDataService.getTeam(this.teamId).subscribe(team => {
             this.team = team;
-            super.addSubscription(
-              this.gameService.getTeamGames(this.teamId).subscribe(games => this.games = games)
+            this.addSubscription(
+              this.publicDataService.getTeamGames(this.teamId).subscribe(games => this.games = games)
             );
           })
         );
       }),
       this.authService.user.subscribe(user => this.user = user),
-      this.favoriteService.getFavorite(this.teamId).subscribe(fav => this.favorite = fav || false),
+      this.userDataService.getFavorite(this.teamId).subscribe(fav => this.favorite = fav || false),
     );
   }
 }

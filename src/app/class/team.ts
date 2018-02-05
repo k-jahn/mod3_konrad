@@ -1,5 +1,5 @@
 // Team class definintion
-export class Team {
+export interface Team {
     id: number;
     name: string;
     coach: string;
@@ -11,9 +11,4 @@ export class Team {
     tie: number;
     goal_scored: number;
     goal_taken: number;
-    constructor(data: object) {
-        for (const key of Object.getOwnPropertyNames(data)) {
-            this[key] = data[key];
-        }
-    }
 }

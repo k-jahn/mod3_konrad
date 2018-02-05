@@ -4,7 +4,6 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 // service
-import { TeamService } from '../service/team.service';
 
 // parent
 import { Unsubscribe } from '../_unsubscribe';
@@ -14,7 +13,8 @@ import { Team } from '../class/team';
 
 // const
 import { SCHOOL } from '../const/school';
-import { FavoriteService } from '../service/favorite.service';
+import { UserDataService } from '../service/user-data.service';
+import { PublicDataService } from '../service/public-data.service';
 
 @Component({
   selector: 'app-badge-team',
@@ -31,10 +31,10 @@ export class BadgeTeamComponent extends Unsubscribe implements OnInit, OnChanges
   school = SCHOOL;
 
   constructor(
-    private favoriteService: FavoriteService,
+    private userDataService: UserDataService,
     private location: Location,
     private router: Router,
-    private teamService: TeamService,
+    private publicDataService: PublicDataService,
   ) {
     super();
   }
@@ -42,15 +42,15 @@ export class BadgeTeamComponent extends Unsubscribe implements OnInit, OnChanges
   ngOnInit() {
   }
   ngOnChanges() {
-    super.addSubscription(
-      this.teamService.getTeam(this.teamId).subscribe(team => {
+    this.addSubscription(
+      this.publicDataService.getTeam(this.teamId).subscribe(team => {
         this.team = team;
-        super.addSubscription(
-          this.favoriteService.getFavorite(this.teamId).subscribe(fav => this.favorite = fav)
+        this.addSubscription(
+          this.userDataService.getFavorite(this.teamId).subscribe(fav => this.favorite = fav)
         );
       })
     );
-    super.addSubscription(
+    this.addSubscription(
       this.router.events.subscribe((val) => {
         if (this.location.path() === '/team/' + this.teamId) {
           this.detailActive = true;

@@ -5,7 +5,7 @@ export class Unsubscribe implements OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
-  addSubscription(...subs: Subscription[]) {
+  protected addSubscription(...subs: Subscription[]) {
     for (const sub of subs) {
       this.subscriptions.push(sub);
     }

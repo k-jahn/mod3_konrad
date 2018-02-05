@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { GameService } from './game.service';
+import { PublicDataService } from './public-data.service';
 
 describe('GameService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [GameService]
+      providers: [PublicDataService]
     });
   });
 
-  it('should be created', inject([GameService], (service: GameService) => {
+  it('should be created', inject([PublicDataService], (service: PublicDataService) => {
     expect(service).toBeTruthy();
   }));
 });

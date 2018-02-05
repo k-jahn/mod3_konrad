@@ -9,7 +9,7 @@ import { Game } from '../class/game';
 import { Team } from '../class/team';
 
 // service
-import { GameService } from '../service/game.service';
+import { PublicDataService } from '../service/public-data.service';
 import { AppTitleService } from '../service/app-title.service';
 
 @Component({
@@ -29,7 +29,7 @@ export class DetailSeasonComponent extends Unsubscribe implements OnInit {
   }
 
   constructor(
-    private gameService: GameService,
+    private publicDataService: PublicDataService,
     private titleService: AppTitleService,
     private router: Router,
   ) {
@@ -38,8 +38,8 @@ export class DetailSeasonComponent extends Unsubscribe implements OnInit {
 
   ngOnInit() {
     // get data
-    super.addSubscription(
-      this.gameService.getPlayedGames().subscribe(games => {
+    this.addSubscription(
+      this.publicDataService.getPlayedGames().subscribe(games => {
         this.games = games;
       })
     );
