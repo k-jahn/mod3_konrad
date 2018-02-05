@@ -20,7 +20,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 @Injectable()
 export class PublicDataService extends DatabaseService {
 
-  private teams = this.getArray('/public/teams').pipe(
+  private teams = this.getArray('/public/teams/').pipe(
     map(x => x as Team[])
   );
 

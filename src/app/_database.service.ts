@@ -7,45 +7,43 @@ import { Subscription } from 'rxjs/Subscription';
 
 export class DatabaseService {
 
-  private connections: Subscription[] = [];
+  private connections = {};
 
   public closeConnections(): void {
-    this.connections.forEach(x => {
-      x.unsubscribe();
-    });
-    this.connections = [];
+    for (const path of Object.getOwnPropertyNames(this.connections)) {
+      console.log(`closing database connection: ${path}`);
+      this.connections[path].unsubscribe();
+    }
   }
 
   constructor(
     private db: AngularFireDatabase
   ) { }
 
-  protected update(key: string, data: object): void {
-    this.db.object(key).update(data);
+  protected update(path: string, data: object): void {
+    this.db.object(path).update(data);
   }
 
   // get information from db, manages localStore caching -----------------------------------
-  protected getArray(key: string): BehaviorSubject<any[]> {
-    const behaviorSubject = new BehaviorSubject<any[]>(JSON.parse(localStorage.getItem(key)) || null);
-    this.connections.push(
-      this.db.list(key).valueChanges().subscribe(response => {
-        behaviorSubject.next(response);
-        localStorage.setItem(key, JSON.stringify(response));
-        console.log(key + ': recieved new data array, setting to localStorage');
-      })
-    );
+  protected getArray(path: string): BehaviorSubject<any[]> {
+    console.log(`opening database connection ${path}`);
+    const behaviorSubject = new BehaviorSubject<any[]>(JSON.parse(localStorage.getItem(path)) || null);
+    this.connections[path] = this.db.list(path).valueChanges().subscribe(response => {
+      behaviorSubject.next(response);
+      localStorage.setItem(path, JSON.stringify(response));
+      console.log(path + ': recieved new data array, setting to localStorage');
+    });
     return behaviorSubject;
   }
 
-  protected getObject(key: string): BehaviorSubject<object> {
-    const behaviorSubject = new BehaviorSubject<object>(JSON.parse(localStorage.getItem(key)) || null);
-    this.connections.push(
-      this.db.object(key).valueChanges().subscribe(response => {
-        behaviorSubject.next(response);
-        localStorage.setItem(key, JSON.stringify(response));
-        console.log(key + ': recieved new data object, setting to localStorage');
-      })
-    );
+  protected getObject(path: string): BehaviorSubject<object> {
+    console.log(`opening database connection: ${path}`);
+    const behaviorSubject = new BehaviorSubject<object>(JSON.parse(localStorage.getItem(path)) || null);
+    this.connections[path] = this.db.object(path).valueChanges().subscribe(response => {
+      behaviorSubject.next(response);
+      localStorage.setItem(path, JSON.stringify(response));
+      console.log(path + ': recieved new data object, setting to localStorage');
+    });
     return behaviorSubject;
   }
 
